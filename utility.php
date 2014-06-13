@@ -1,19 +1,13 @@
 <?php
 $filename = "utility.html";
 $start = 1;
-$max = 12;
+$max = 45;
 
 $file = file_get_contents($filename);
 
 $wrapper_start = <<<END
 			<!-- BEGIN new spell page -->
 			<div class="sheet-spell-page-utilityPAGENUMBER">
-				<div class="sheet-row sheet-sub-header">
-					<div class="sheet-col-1-2 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
-					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
-					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
-					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Prepared?</div>
-				</div>
 END;
 
 $wrapper_end = <<<END
@@ -21,15 +15,24 @@ $wrapper_end = <<<END
 			<!-- END spell page -->
 END;
 
-$utility_rows = <<<END
+$utility_rows = <<<'END'
 	
 	<!-- BEGIN utility spell row -->
 	<div class="sheet-utility-spell-rowCURRENTROW">
 		<div class="sheet-row sheet-grey-row">
+			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Row#</div>
+			<div class="sheet-col-5-12 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
+			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
+			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
+			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Prepared?</div>
+		</div>
+		
+		<div class="sheet-row sheet-grey-row">
 
-			<div class="sheet-col-1-2 sheet-vert-middle"><input type="text" name="attr_utilityspellname"></div>
+			<div class="sheet-col-1-12 sheet-vert-middle sheet-spell-row-number">CURRENTROW</div>
+			<div class="sheet-col-5-12 sheet-vert-middle"><input type="text" name="attr_utilityspellnameCURRENTROW"></div>
 			<div class="sheet-col-1-6 sheet-vert-middle">
-				<select name="attr_utilityspellbaselevel">
+				<select name="attr_utilityspellbaselevelCURRENTROW">
 					<option value="0">Cantrip</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -43,7 +46,7 @@ $utility_rows = <<<END
 				</select>
 			</div>	
 			<div class="sheet-col-1-6 sheet-vert-middle" title="Use this field to indicate where you learned or have access to this spell from.  Useful to know if multiclassing or if you gain access to spells your class would not normally have thanks to subclass bonuses">
-				<select name="attr_utilityspellgainedfrom">
+				<select name="attr_utilityspellgainedfromCURRENTROW">
 					<option value="0">None</option>
 					<option value="@{bard_spell_dc}">Bard</option>
 					<option value="@{cleric_spell_dc}">Cleric</option>
@@ -55,7 +58,7 @@ $utility_rows = <<<END
 				</select>
 			</div>	
 			<div class="sheet-col-1-6 sheet-vert-middle" title="Always prepared means the spell is either a cantrip or one that was provided to you via a method which indicated it would never count against your prepared limit for the day">
-				<select name="attr_utilityspellisprepared">
+				<select name="attr_utilityspellispreparedCURRENTROW">
 					<option value="1">Yes</option>
 					<option value="0">NO</option>
 					<option value="0.0001">Always</option>
@@ -66,8 +69,8 @@ $utility_rows = <<<END
 				
 		<div class="sheet-row sheet-grey-row sheet-footer-row">
 			<div class="sheet-col-1-10 sheet-vert-middle"><br/>Description<br/></div>
-			<div class="sheet-col-4-5"><textarea class="sheet-fluid-textarea" name="attr_utilityspelldescription"></textarea></div>
-			<div class="sheet-col-1-10 sheet-vert-middle"><button type="roll" class="sheet-roll" name="roll_UtilitySpellCURRENTROW" value="/em uses @{utilityspellname} \n\n@{utilityspelldescription}">Use</button></div>
+			<div class="sheet-col-4-5"><textarea class="sheet-fluid-textarea" name="attr_utilityspelldescriptionCURRENTROW"></textarea></div>
+			<div class="sheet-col-1-10 sheet-vert-middle"><button type="roll" class="sheet-roll" name="roll_UtilitySpellCURRENTROW" value="/em uses @{utilityspellnameCURRENTROW} \n\n@{utilityspelldescriptionCURRENTROW}">Use</button></div>
 			</div>
 			
 	</div>

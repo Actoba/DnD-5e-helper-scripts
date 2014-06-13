@@ -8,13 +8,7 @@ $file = file_get_contents($filename);
 $wrapper_start = <<<END
 			<!-- BEGIN new spell page -->
 			<div class="sheet-spell-page-attackPAGENUMBER">
-				<div class="sheet-row sheet-sub-header">
-					<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Row#</div>
-					<div class="sheet-col-5-12 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
-					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
-					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
-					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Prepared?</div>
-				</div>
+				
 END;
 
 $wrapper_end = <<<END
@@ -26,6 +20,14 @@ $attack_rows = <<<'END'
 	
 	<!-- BEGIN attack spell row -->
 	<div class="sheet-attack-spell-rowCURRENTROW">
+		<div class="sheet-row sheet-grey-row">
+			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Row#</div>
+			<div class="sheet-col-5-12 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
+			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
+			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
+			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Prepared?</div>
+		</div>
+		
 		<div class="sheet-row sheet-grey-row">
 
 			<div class="sheet-col-1-12 sheet-vert-middle sheet-spell-row-number">CURRENTROW</div>
@@ -65,8 +67,18 @@ $attack_rows = <<<'END'
 			</div>
 			
 		</div>
-				
+		
 		<div class="sheet-row sheet-grey-row">
+			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Attack Stat</div>
+			<div class="sheet-col-1-4 sheet-vert-bottom sheet-center sheet-small-label">Target</div>
+			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Range</div>
+			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Damage</div>
+			<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Damage Type</div>
+			<div class="sheet-col-5-24 sheet-vert-bottom sheet-center sheet-small-label">Damage Effects</div>
+			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Macro</div>
+		</div>
+				
+		<div class="sheet-row sheet-grey-row sheet-footer-row">
 			<div class="sheet-col-1-12 sheet-small-label sheet-center">
 				<select name="attr_attackspellattackstatCURRENTROW">
 					<option value="0">None</option>
@@ -85,15 +97,7 @@ $attack_rows = <<<'END'
 			<div class="sheet-col-5-24 sheet-small-label sheet-center"><input type="text" name="attr_attackspelldamageeffectsCURRENTROW" value="None"></div>
 			<div class="sheet-col-1-12 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_AttackSpellCURRENTROW" value="/em uses @{attackspellnameCURRENTROW} to attack \n\n[[1d20 + @{attackspellattackstatCURRENTROW} [Attack stat mod] + @{PB} [Proficiency Bonus] ]] vs AC\n\n[[@{attackspelldamageCURRENTROW}]] @{attackspelldamagetypeCURRENTROW} damage on a hit\n\nAdditional effect on a hit : @{attackspelldamageeffectsCURRENTROW}">Use</button></div>
 		</div>
-		<div class="sheet-row sheet-footer-row sheet-grey-row">
-			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Attack Stat</div>
-			<div class="sheet-col-1-4 sheet-vert-bottom sheet-center sheet-small-label">Target</div>
-			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Range</div>
-			<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Damage</div>
-			<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Damage Type</div>
-			<div class="sheet-col-5-24 sheet-vert-bottom sheet-center sheet-small-label">Damage Effects</div>
-			<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Macro</div>
-		</div>
+		
 			
 	</div>
 			
