@@ -16,7 +16,7 @@ $header_row = <<<END
 END;
 
 $buttons = <<<END
-	<input type="checkbox" name="attr_add_spell_rowgroupNEXTGROUP" class="sheet-add-spell-rowgroupNEXTGROUP sheet-add-spell-rowgroup" value="NEXTGROUP" title="Show another 5 rows/>
+	<input type="checkbox" name="attr_add_spell_rowgroupNEXTGROUP" class="sheet-add-spell-rowgroupNEXTGROUP sheet-add-spell-rowgroup" value="NEXTGROUP" title="Show another 5 rows"/>
 END;
 
 $utility_rows = <<<END
