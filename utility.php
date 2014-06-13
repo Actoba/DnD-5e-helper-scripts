@@ -1,27 +1,30 @@
 <?php
 $filename = "utility.html";
 $start = 1;
-$max = 50;
+$max = 12;
 
 $file = file_get_contents($filename);
 
-
-$header_row = <<<END
-	<div class="sheet-row sheet-sub-header">
-		<div class="sheet-col-1-2 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
-		<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
-		<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
-		<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Prepared?</div>
-	</div>
+$wrapper_start = <<<END
+			<!-- BEGIN new spell page -->
+			<div class="sheet-spell-page-utilityPAGENUMBER">
+				<div class="sheet-row sheet-sub-header">
+					<div class="sheet-col-1-2 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
+					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
+					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
+					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Prepared?</div>
+				</div>
 END;
 
-$buttons = <<<END
-	<input type="checkbox" name="attr_add_spell_rowgroupNEXTGROUP" class="sheet-add-spell-rowgroupNEXTGROUP sheet-add-spell-rowgroup" value="NEXTGROUP" title="Show another 5 rows"/>
+$wrapper_end = <<<END
+			</div>
+			<!-- END spell page -->
 END;
 
 $utility_rows = <<<END
+	
 	<!-- BEGIN utility spell row -->
-	<div class="sheet-spell-rowCURRENTROW sheet-spell-rowgroupCURRENTGROUP">
+	<div class="sheet-utility-spell-rowCURRENTROW">
 		<div class="sheet-row sheet-grey-row">
 
 			<div class="sheet-col-1-2 sheet-vert-middle"><input type="text" name="attr_utilityspellname"></div>
@@ -77,19 +80,26 @@ $full_output = "";
 
 for ($i=$start; $i<=$max; $i++)
 {
-	$return_text = $utility_rows;
+	$return_text = "";
 	
-	if (is_int($i/5) && $i<$max)
+	if ($i%5==1 && $i<$max)
 	{
-		//Add buttons for more rows then repeat header every 5 rows, except for the last set
-		$return_text .= $buttons;
-		$return_text .= $header_row;
+		//Add start of page wrapper
+		$return_text .= $wrapper_start;
+	}
+
+	$return_text .= $utility_rows;
+	
+	if (is_int($i/5) || $i==$max)
+	{
+		//Add end of page wrapper
+		$return_text .= $wrapper_end;
 	}
 	
 	// Replace placeholders with correct values
 	$return_text = str_replace("CURRENTROW", $i, $return_text);
-	$return_text = str_replace("CURRENTGROUP", ceil($i/5), $return_text);
-	$return_text = str_replace("NEXTGROUP", ceil($i/5)+1, $return_text);
+	$return_text = str_replace("PAGENUMBER", ceil($i/5), $return_text);
+
 	
 	$full_output .= $return_text;
 	
