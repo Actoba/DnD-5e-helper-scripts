@@ -45,11 +45,11 @@ $melee_rows = <<<'END'
 		<div class="sheet-col-1-12" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_meleemagicCURRENTROW" value="0"></div>
 		<div class="sheet-col-1-24">&nbsp;</div>
 		<div class="sheet-col-1-24"><input type="number" name="attr_meleetohitCURRENTROW" value="@{meleeattackstatCURRENTROW} + @{pbmeleeCURRENTROW} + @{meleemagicCURRENTROW}" disabled="disabled"></div>
-		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeAttackCURRENTROW" value="/em uses @{meleeweaponnameCURRENTROW} to attack\n\n[[1d20 + @{meleetohitCURRENTROW} [To Hit] ]] vs AC" >Attack</button></div>
+		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeAttackCURRENTROW" value="/em uses @{meleeweaponnameCURRENTROW} to attack\n\n[[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] | [[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] vs AC" >Attack</button></div>
 		<div class="sheet-col-1-12" title="Only enter the base damage roll here without any bonuses from stats or other sources"><input class="sheet-center" type="text" name="attr_meleedmgCURRENTROW"></div>
 		<div class="sheet-col-1-24"><input type="number" name="attr_meleedmgbonusCURRENTROW" value="(@{meleeattackstatCURRENTROW} * @{meleeattackweildedCURRENTROW}) + @{meleemagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-8"><input type="text" name="attr_meleedmgtypeCURRENTROW"></div>
-		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeDamageCURRENTROW" value="For [[@{meleedmgCURRENTROW} [Base damage] + @{meleedmgbonusCURRENTROW} [Damage Bonus] ]] @{meleedmgtypeCURRENTROW} damage" >Damage</button></div>
+		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeDamageCURRENTROW" value="For [[@{meleedmgCURRENTROW} [Base damage] + @{meleedmgbonusCURRENTROW} [Damage Bonus] + @{global_damage_bonus} [Active Weapon Damage Bonus] ]] @{meleedmgtypeCURRENTROW} damage" >Damage</button></div>
 	</div>
 	<!-- END melee weapon row -->
 
@@ -89,11 +89,11 @@ $ranged_rows = <<<'END'
 		<div class="sheet-col-1-12" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_rangedmagicCURRENTROW" value="0"></div>
 		<div class="sheet-col-1-24">&nbsp;</div>
 		<div class="sheet-col-1-24"><input type="number" name="attr_rangedtohitCURRENTROW" value="@{rangedtypeCURRENTROW} + @{pbrangedCURRENTROW} + @{rangedmagicCURRENTROW}" disabled="disabled"></div>
-		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_RangedAttackCURRENTROW" value="/em uses @{rangedweaponnameCURRENTROW} to attack\n\n[[1d20 + @{rangedtohitCURRENTROW} [To Hit] ]] vs AC" >Attack</button></div>
+		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_RangedAttackCURRENTROW" value="/em uses @{rangedweaponnameCURRENTROW} to attack\n\n[[1d20 + @{rangedtohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] | [[1d20 + @{rangedtohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] vs AC" >Attack</button></div>
 		<div class="sheet-col-1-12" title="Only enter the base damage roll here without any bonuses from stats or other sources"><input class="sheet-center" type="text" name="attr_rangeddmgCURRENTROW"></div>		
 		<div class="sheet-col-1-24"><input type="number" name="attr_rangeddmgbonusCURRENTROW" value="@{rangedtypeCURRENTROW} + @{rangedmagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-8"><input type="text" name="attr_rangeddmgtypeCURRENTROW"></div>
-		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_RangedDamageCURRENTROW" value="For [[@{rangeddmgCURRENTROW} [Base damage] + @{rangeddmgbonusCURRENTROW} [Damage Bonus] ]] @{rangeddmgtypeCURRENTROW} damage" >Damage</button></div>
+		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_RangedDamageCURRENTROW" value="For [[@{rangeddmgCURRENTROW} [Base damage] + @{rangeddmgbonusCURRENTROW} [Damage Bonus] + @{global_damage_bonus} [Active Weapon Damage Bonus] ]] @{rangeddmgtypeCURRENTROW} damage" >Damage</button></div>
 	</div>
 	<!-- END ranged weapon row -->
 
