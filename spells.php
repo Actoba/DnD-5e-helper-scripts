@@ -1,7 +1,7 @@
 <?php
 $filename = "spells.html";
 $start = 1;
-$max = 2;
+$max = 45;
 
 $file = file_get_contents($filename);
 
@@ -219,7 +219,7 @@ for ($i=$start; $i<=$max; $i++)
 }
 
 $html_prep_calc = "<input type=\"hidden\" name=\"attr_total_spells_prepared_calc\" value=\"floor(" . $prep_calc . ")\" />";
-$html_always_prep_calc = "<input type=\"hidden\" name=\"attr_total_spells_always_prepared_calc\" value=\"((" . $prep_calc . ") * 1000) - (floor(" . $prep_calc . ") * 1000)\" />";
+$html_always_prep_calc = "<input type=\"hidden\" name=\"attr_total_spells_always_prepared_calc\" value=\"round(((" . $prep_calc . ") * 10000) - (floor(" . $prep_calc . ") * 10000))\" />";
 
 
 $full_output .= $html_prep_calc;
