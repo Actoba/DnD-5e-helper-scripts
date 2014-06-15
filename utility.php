@@ -71,7 +71,7 @@ $utility_rows = <<<'END'
 			<div class="sheet-col-1-10 sheet-vert-middle"><br/>Description<br/></div>
 			<div class="sheet-col-4-5"><textarea class="sheet-fluid-textarea" name="attr_utilityspelldescriptionCURRENTROW"></textarea></div>
 			<div class="sheet-col-1-10 sheet-vert-middle"><button type="roll" class="sheet-roll" name="roll_UtilitySpellCURRENTROW" value="/em uses @{utilityspellnameCURRENTROW} \n\n@{utilityspelldescriptionCURRENTROW}">Use</button></div>
-			</div>
+		</div>
 			
 	</div>
 			
