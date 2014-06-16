@@ -101,7 +101,7 @@ $attack_rows = <<<'END'
 				<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" name="attr_attackspelldamageCURRENTROW"></div>
 				<div class="sheet-col-1-8 sheet-small-label sheet-center"><input type="text" name="attr_attackspelldamagetypeCURRENTROW"></div>
 				<div class="sheet-col-5-24 sheet-small-label sheet-center"><input type="text" name="attr_attackspelldamageeffectsCURRENTROW" value="None"></div>
-				<div class="sheet-col-1-12 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_AttackSpellCURRENTROW" value="/em uses @{attackspellnameCURRENTROW} to attack \n\n[[1d20 + @{attackspellattackstatCURRENTROW} [Attack stat mod] + @{PB} [Proficiency Bonus] ]] vs AC\n\n[[@{attackspelldamageCURRENTROW}]] @{attackspelldamagetypeCURRENTROW} damage on a hit\n\nAdditional effect on a hit : @{attackspelldamageeffectsCURRENTROW}">Use</button></div>
+				<div class="sheet-col-1-12 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_AttackSpellCURRENTROW" value="/em uses @{attackspellnameCURRENTROW} to attack \n\n[[1d20 + @{attackspellattackstatCURRENTROW} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] | [[1d20 + @{attackspellattackstatCURRENTROW} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] vs AC\n\n[[@{attackspelldamageCURRENTROW} [Base Spell Damage] + @{global_spell_damage_bonus} [Active Spell Damage Bonus]]] @{attackspelldamagetypeCURRENTROW} damage on a hit\n\nAdditional effect on a hit : @{attackspelldamageeffectsCURRENTROW}">Use</button></div>
 			</div>
 		</div>
 		
@@ -110,13 +110,15 @@ $attack_rows = <<<'END'
 				<div class="sheet-col-1-12 sheet-center sheet-small-label">Saving Stat</div>
 				<div class="sheet-col-1-8 sheet-center sheet-small-label">Save DC</div>
 				<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom DC</div>
-				<div class="sheet-col-1-3 sheet-center sheet-small-label">Failed Save</div>
-				<div class="sheet-col-7-24 sheet-center sheet-small-label">Successful Save</div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Damage</div>
+				<div class="sheet-col-1-8 sheet-center sheet-small-label">Damage Type</div>
+				<div class="sheet-col-1-4 sheet-center sheet-small-label">Other effects</div>
+				<div class="sheet-col-1-6 sheet-center sheet-small-label">Successful Save</div>
 				<div class="sheet-col-1-12 sheet-center sheet-small-label">Macro</div>
 			</div>
 			
 			<div class="sheet-row sheet-footer-row">
-				<div class="sheet-col-1-12 sheet-margin-top">
+				<div class="sheet-col-1-12">
 					<select name="attr_savespellsavestatCURRENTROW">
 						<option value="STR">STR</option>
 						<option value="DEX">DEX</option>
@@ -126,7 +128,7 @@ $attack_rows = <<<'END'
 						<option value="CHA">CHA</option>
 					</select>
 				</div>
-				<div class="sheet-col-1-8 sheet-margin-top" title="Pick the class that the save DC will be created from or set your own DC by selecting custom here and then entering the DC in the next field">
+				<div class="sheet-col-1-8" title="Pick the class that the save DC will be created from or set your own DC by selecting custom here and then entering the DC in the next field">
 					<select name="attr_savespellsavedcCURRENTROW">
 						<option value="0">Custom DC</option>
 						<option value="@{bard_spell_dc}">Bard DC</option>
@@ -137,11 +139,12 @@ $attack_rows = <<<'END'
 						<option value="@{ranger_spell_dc}">Ranger DC</option>
 					</select>
 				</div>
-				<div class="sheet-col-1-12 sheet-margin-top"><input type="number" name="attr_savespellcustomdcCURRENTROW" value="0" title="Unless you have selected Custom in the previous field this should always be 0"></div>
-
-				<div class="sheet-col-1-3"><textarea class="sheet-fluid-textarea" name="attr_savespellsavefailCURRENTROW"></textarea></div>
-				<div class="sheet-col-7-24"><textarea class="sheet-fluid-textarea" name="attr_savespellsavesuccessCURRENTROW"></textarea></div>
-				<div class="sheet-col-1-12 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SaveThrowSpellCURRENTROW" value="/em uses @{savespellnameCURRENTROW} to attack\n\nDC [[@{savespellsavedcCURRENTROW} + @{savespellcustomdcCURRENTROW}]] @{savespellsavestatCURRENTROW} saving throw\nOn a failed save :\n@{savespellsavefailCURRENTROW}\nOn a successful save :\n@{savespellsavesuccessCURRENTROW}" >Use</button></div>
+				<div class="sheet-col-1-12"><input type="number" name="attr_savespellcustomdcCURRENTROW" value="0" title="Unless you have selected Custom in the previous field this should always be 0"></div>
+				<div class="sheet-col-1-12"><input type="text" name="attr_savespellbasedmgCURRENTROW"></div>
+				<div class="sheet-col-1-8"><input type="text" name="attr_savespelldmgtypeCURRENTROW"></div>
+				<div class="sheet-col-1-4"><input type="text" name="attr_savespellsavefailCURRENTROW"></textarea></div>
+				<div class="sheet-col-1-6"><input type="text" name="attr_savespellsavesuccessCURRENTROW"></div>
+				<div class="sheet-col-1-12 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SaveThrowSpellCURRENTROW" value="/em uses @{spellnameCURRENTROW} to attack\n\nDC [[@{savespellsavedcCURRENTROW} + @{savespellcustomdcCURRENTROW}]] @{savespellsavestatCURRENTROW} saving throw\nOn a failed save :\n[[@{savespellbasedmgCURRENTROW} [Base Damage] + @{global_spell_damage_bonus} [Active Spell Damage Bonus] ]] @{savespelldmgtypeCURRENTROW} damage and @{savespellsavefailCURRENTROW}\nOn a successful save :\n@{savespellsavesuccessCURRENTROW}" >Use</button></div>
 				
 			</div>
 		</div>
