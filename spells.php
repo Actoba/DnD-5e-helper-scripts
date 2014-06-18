@@ -1,7 +1,23 @@
 <?php
 $filename = "spells.html";
 $start = 1;
-$max = 45;
+$per_page = 10;
+$max = 10 * $per_page;
+
+$selected_spell_level = " selected=\"selected\"";
+$selected_array = array (
+	"SELECTED0" => "",
+	"SELECTED1" => "",
+	"SELECTED2" => "",
+	"SELECTED3" => "",
+	"SELECTED4" => "",
+	"SELECTED5" => "",
+	"SELECTED6" => "",
+	"SELECTED7" => "",
+	"SELECTED8" => "",
+	"SELECTED9" => "",
+);
+
 
 $file = file_get_contents($filename);
 
@@ -35,16 +51,16 @@ $attack_rows = <<<'END'
 					<div class="sheet-col-1-6 sheet-vert-middle"><input type="text" name="attr_spellrangeCURRENTROW"></div>
 					<div class="sheet-col-1-12 sheet-vert-middle">
 						<select name="attr_spellbaselevelCURRENTROW">
-							<option value="0">Cantrip</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
+							<option value="0"SELECTED0>Cantrip</option>
+							<option value="1"SELECTED1>1</option>
+							<option value="2"SELECTED2>2</option>
+							<option value="3"SELECTED3>3</option>
+							<option value="4"SELECTED4>4</option>
+							<option value="5"SELECTED5>5</option>
+							<option value="6"SELECTED6>6</option>
+							<option value="7"SELECTED7>7</option>
+							<option value="8"SELECTED8>8</option>
+							<option value="9"SELECTED9>9</option>
 						</select>
 					</div>	
 					<div class="sheet-col-1-6 sheet-vert-middle" title="Use this field to indicate where you learned or have access to this spell from.  Useful to know if multiclassing or if you gain access to spells your class would not normally have thanks to subclass bonuses">
@@ -73,7 +89,7 @@ $attack_rows = <<<'END'
 				<input type="radio" name="attr_spelltypetabrowCURRENTROW" class="sheet-spelltypetab sheet-spelltypetab1" value="1" title="Attack Roll" checked="checked"/>
 				<input type="radio" name="attr_spelltypetabrowCURRENTROW" class="sheet-spelltypetab sheet-spelltypetab2" value="2" title="Saving Throw"/>
 				<input type="radio" name="attr_spelltypetabrowCURRENTROW" class="sheet-spelltypetab sheet-spelltypetab3" value="3" title="Healing"/>
-				<input type="radio" name="attr_spelltypetabrowCURRENTROW" class="sheet-spelltypetab sheet-spelltypetab4" value="4" title="Other/Utility"/>
+				<input type="radio" name="attr_spelltypetabrowCURRENTROW" class="sheet-spelltypetab sheet-spelltypetab4" value="4" title="Other"/>
 		
 				<div class="sheet-spell-type-attack">
 					<div class="sheet-row">
@@ -185,9 +201,14 @@ $full_output = "";
 
 for ($i=$start; $i<=$max; $i++)
 {
+	// Reset current loop vars
 	$return_text = "";
+	foreach ($selected_array as $key => $value)
+	{
+		$selected_array[$key] = "";
+	}
 	
-	if (($i%5==1 && $i<$max) || ($i%5==1 && $i==$max) )
+	if (($i%$per_page==1 && $i<$max) || ($i%5==1 && $i==$max) )
 	{
 		//Add start of page wrapper
 		$return_text .= $wrapper_start;
@@ -195,7 +216,7 @@ for ($i=$start; $i<=$max; $i++)
 
 	$return_text .= $attack_rows;
 	
-	if (is_int($i/5) || $i==$max)
+	if (is_int($i/$per_page) || $i==$max)
 	{
 		//Add end of page wrapper
 		$return_text .= $wrapper_end;
@@ -203,8 +224,46 @@ for ($i=$start; $i<=$max; $i++)
 	
 	// Replace placeholders with correct values
 	$return_text = str_replace("CURRENTROW", $i, $return_text);
-	$return_text = str_replace("PAGENUMBER", ceil($i/5), $return_text);
-
+	$return_text = str_replace("PAGENUMBER", floor(($i-1)/$per_page), $return_text);
+		
+	switch (floor(($i-1)/$per_page))
+	{
+			case 0:
+				$selected_array["SELECTED0"] = $selected_spell_level;
+				break;
+			case 1:
+				$selected_array["SELECTED1"] = $selected_spell_level;
+				break;
+			case 2:
+				$selected_array["SELECTED2"] = $selected_spell_level;
+				break;
+			case 3:
+				$selected_array["SELECTED3"] = $selected_spell_level;
+				break;
+			case 4:
+				$selected_array["SELECTED4"] = $selected_spell_level;
+				break;
+			case 5:
+				$selected_array["SELECTED5"] = $selected_spell_level;
+				break;
+			case 6:
+				$selected_array["SELECTED6"] = $selected_spell_level;
+				break;
+			case 7:
+				$selected_array["SELECTED7"] = $selected_spell_level;
+				break;
+			case 8:
+				$selected_array["SELECTED8"] = $selected_spell_level;
+				break;
+			case 9:
+				$selected_array["SELECTED9"] = $selected_spell_level;
+				break;
+	}
+	
+	foreach ($selected_array as $key => $value)
+	{
+		$return_text = str_replace($key, $value, $return_text);
+	}
 	
 	$full_output .= $return_text;
 	
@@ -227,7 +286,7 @@ $html_always_prep_calc = "<input type=\"hidden\" name=\"attr_total_spells_always
 $full_output .= $html_prep_calc;
 $full_output .= $html_always_prep_calc;
 
-echo $full_output;
+//echo $full_output;
 
 $file = $full_output;
 file_put_contents($filename, $file);
