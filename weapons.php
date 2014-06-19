@@ -150,7 +150,7 @@ for ($i=$start; $i<=$max; $i++)
 
 $full_output .= $wrapper_end;
 
-echo $full_output;
+//echo $full_output;
 
 $file = $full_output;
 file_put_contents($filename, $file);

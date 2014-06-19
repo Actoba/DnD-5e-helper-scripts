@@ -86,7 +86,7 @@ $html_weight_calc = "<input type=\"hidden\" name=\"attr_inventory_weight_calc\" 
 $full_output .= $html_weight_calc;
 
 
-echo $full_output;
+//echo $full_output;
 
 $file = $full_output;
 file_put_contents($filename, $file);
