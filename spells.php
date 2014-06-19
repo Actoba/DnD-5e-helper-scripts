@@ -78,7 +78,7 @@ $attack_rows = <<<'END'
 					<div class="sheet-col-1-6 sheet-vert-middle" title="Always prepared means the spell is either a cantrip or one that was provided to you via a method which indicated it would never count against your prepared limit for the day">
 						<select name="attr_spellispreparedCURRENTROW">
 							<option value="1">Yes</option>
-							<option value="0">NO</option>
+							<option value="0" selected="selected">NO</option>
 							<option value="0.0001">Always</option>
 						</select>
 					</div>
