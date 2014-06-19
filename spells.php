@@ -1,7 +1,7 @@
 <?php
 $filename = "spells.html";
 $start = 1;
-$per_page = 10;
+$per_page = 8;
 $max = 10 * $per_page;
 
 $selected_spell_level = " selected=\"selected\"";
