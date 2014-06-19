@@ -42,7 +42,7 @@ $melee_rows = <<<'END'
 				<option value="@{finesse_mod}">Yes</option>
 			</select>
 		</div>
-		<div class="sheet-col-1-12" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_meleemagicCURRENTROW" value="0"></div>
+		<div class="sheet-col-1-12" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_meleemagicCURRENTROW" value="0" step="1"></div>
 		<div class="sheet-col-1-24">&nbsp;</div>
 		<div class="sheet-col-1-24"><input type="number" name="attr_meleetohitCURRENTROW" value="@{meleeattackstatCURRENTROW} + @{pbmeleeCURRENTROW} + @{meleemagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeAttackCURRENTROW" value="/em uses @{meleeweaponnameCURRENTROW} to attack\n\n[[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] | [[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] vs AC" >Attack</button></div>
@@ -86,7 +86,7 @@ $ranged_rows = <<<'END'
 				<option value="@{strength_mod}">Thrown</option>
 			</select>
 		</div>
-		<div class="sheet-col-1-12" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_rangedmagicCURRENTROW" value="0"></div>
+		<div class="sheet-col-1-12" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_rangedmagicCURRENTROW" value="0" step="1"></div>
 		<div class="sheet-col-1-24">&nbsp;</div>
 		<div class="sheet-col-1-24"><input type="number" name="attr_rangedtohitCURRENTROW" value="@{rangedtypeCURRENTROW} + @{pbrangedCURRENTROW} + @{rangedmagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_RangedAttackCURRENTROW" value="/em uses @{rangedweaponnameCURRENTROW} to attack\n\n[[1d20 + @{rangedtohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] | [[1d20 + @{rangedtohitCURRENTROW} [To Hit] + @{global_attack_bonus} [Active Weapon Attack Bonus] ]] vs AC" >Attack</button></div>
