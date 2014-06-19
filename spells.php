@@ -155,7 +155,7 @@ $attack_rows = <<<'END'
 								<option value="@{ranger_spell_dc}">Ranger DC</option>
 							</select>
 						</div>
-						<div class="sheet-col-1-12"><input type="number" name="attr_savespellcustomdcCURRENTROW" value="0" title="Unless you have selected Custom in the previous field this should always be 0"></div>
+						<div class="sheet-col-1-12"><input type="number" name="attr_savespellcustomdcCURRENTROW" value="0" min="0" step="1" title="Unless you have selected Custom in the previous field this should always be 0"></div>
 						<div class="sheet-col-1-12"><input type="text" name="attr_savespellbasedmgCURRENTROW"></div>
 						<div class="sheet-col-1-8"><input type="text" name="attr_savespelldmgtypeCURRENTROW"></div>
 						<div class="sheet-col-1-4"><input type="text" name="attr_savespellsavefailCURRENTROW"></div>
