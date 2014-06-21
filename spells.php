@@ -36,7 +36,7 @@ $spell_row = <<<'END'
 				<div class="sheet-col-1 sheet-vert-bottom sheet-center sheet-small-label">SPELLLEVEL</div>
 			</div>
 			
-			<fieldset class="repeating_spellbook_SPELLSHORTLEVEL">
+			<fieldset class="repeating_spellbookSPELLSHORTLEVEL">
 			<!-- BEGIN spell row -->
 			<div class="sheet-grey-row sheet-margin-bottom sheet-padr sheet-padl">
 				<div class="sheet-row">
