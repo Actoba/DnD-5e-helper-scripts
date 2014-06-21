@@ -31,7 +31,7 @@ $wrapper_end = <<<END
 		<!-- END spell page -->
 END;
 
-$spell_row = <<<END
+$spell_row = <<<'END'
 			<div class="sheet-row sheet-sub-header">
 				<div class="sheet-col-1 sheet-vert-bottom sheet-center sheet-small-label">SPELLLEVEL</div>
 			</div>
