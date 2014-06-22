@@ -42,17 +42,50 @@ $spell_row = <<<'END'
 				<div class="sheet-row">
 					<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
 					<div class="sheet-col-1-3 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
-					<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Range</div>
-					<div class="sheet-col-1-4 sheet-vert-bottom sheet-center sheet-small-label">Target/AoE</div>
-					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
+					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">School</div>
+					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Cast time</div>
+					<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label" title="Concentration">Conc?</div>
+					<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Ritual?</div>
 					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Prepared?</div>
 				</div>
 				
 				<div class="sheet-row">
 					<div class="sheet-col-1-12 sheet-vert-middle sheet-center">RAWLEVEL<input type="hidden" name="attr_spellbaselevel" value="PAGENUMBER"></div>	
-					<div class="sheet-col-1-3 sheet-vert-middle"><input type="text" name="attr_spellname"></div>
-					<div class="sheet-col-1-12 sheet-vert-middle"><input type="text" name="attr_spellrange"></div>
-					<div class="sheet-col-1-4 sheet-vert-middle"><input type="text" name="attr_spelltarget" value="1 creature"></div>
+					<div class="sheet-col-1-3 sheet-vert-middle"><input type="text" class=" sheet-center" name="attr_spellname"></div>
+					<div class="sheet-col-1-8 sheet-vert-middle">
+						<select name="attr_spellschool">
+							<option value="n/a" selected="selected">n/a</option>
+							<option value="Abjuration">Abjuration</option>
+							<option value="Conjuration">Conjuration</option>
+							<option value="Divination">Divination</option>
+							<option value="Enchantment">Enchantment</option>
+							<option value="Evocation">Evocation</option>
+							<option value="Illusion">Illusion</option>
+							<option value="Necromancy">Necromancy</option>
+							<option value="Transmutation">Transmutation</option>
+						</select>
+					</div>
+					<div class="sheet-col-1-6 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellcasttime"></div>
+					<div class="sheet-col-1-12 sheet-checkbox-row"><input type="checkbox" value="(Concentration)" name="attr_spellconcentration"></div>
+					<div class="sheet-col-1-12 sheet-checkbox-row"><input type="checkbox" value="(Ritual)" name="attr_spellritual"></div>
+					<div class="sheet-col-1-8 sheet-vert-middle" title="Always prepared means the spell is either a cantrip or one that was provided to you via a method which indicated it would never count against your prepared limit for the day">
+						<select name="attr_spellisprepared">
+							<option value="1">Yes</option>
+							<option value="0" selected="selected">NO</option>
+							<option value="0.0001">Always</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="sheet-row">
+					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
+					<div class="sheet-col-1-3 sheet-vert-bottom sheet-center sheet-small-label">Target/Area of Effect</div>					
+					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Range</div>
+					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Duration</div>
+					<div class="sheet-col-7-24 sheet-vert-bottom sheet-center sheet-small-label">Components</div>
+				</div>
+				
+				<div class="sheet-row">
 					<div class="sheet-col-1-8 sheet-vert-middle" title="Use this field to indicate where you learned or have access to this spell from.  Useful to know if multiclassing or if you gain access to spells your class would not normally have thanks to subclass bonuses">
 						<select name="attr_spellgainedfrom">
 							<option value="0">None</option>
@@ -62,24 +95,20 @@ $spell_row = <<<'END'
 							<option value="@{mage_spell_dc}">Mage</option>
 							<option value="@{paladin_spell_dc}">Paladin</option>
 							<option value="@{ranger_spell_dc}">Ranger</option>
-							<option value="0">Racial Bonus</option>
+							<option value="0">Other</option>
 						</select>
 					</div>	
-					<div class="sheet-col-1-8 sheet-vert-middle" title="Always prepared means the spell is either a cantrip or one that was provided to you via a method which indicated it would never count against your prepared limit for the day">
-						<select name="attr_spellisprepared">
-							<option value="1">Yes</option>
-							<option value="0" selected="selected">NO</option>
-							<option value="0.0001">Always</option>
-						</select>
-					</div>
-					
+					<div class="sheet-col-1-3 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spelltarget" value="1 creature"></div>
+					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellrange"></div>
+					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellduration"></div>
+					<div class="sheet-col-7-24 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellcomponents"></div>
 				</div>
 				
-				<span class="sheet-small-label">Spell Requires :</span>
-				<input type="radio" name="attr_spelltypetabrow" class="sheet-spelltypetab sheet-spelltypetab1" value="1" title="Attack Roll" checked="checked"/>
-				<input type="radio" name="attr_spelltypetabrow" class="sheet-spelltypetab sheet-spelltypetab2" value="2" title="Saving Throw"/>
-				<input type="radio" name="attr_spelltypetabrow" class="sheet-spelltypetab sheet-spelltypetab3" value="3" title="Healing"/>
-				<input type="radio" name="attr_spelltypetabrow" class="sheet-spelltypetab sheet-spelltypetab4" value="4" title="Other"/>
+				<span class="sheet-small-label">Show :</span>
+				<input type="checkbox" name="attr_spelltypeattack" class="sheet-spelltypetab sheet-spelltypeattack" value="1" title="Attack Roll"/>
+				<input type="checkbox" name="attr_spelltypesave" class="sheet-spelltypetab sheet-spelltypesave" value="1" title="Saving Throw"/>
+				<input type="checkbox" name="attr_spelltypeheal" class="sheet-spelltypetab sheet-spelltypeheal" value="1" title="Healing"/>
+				<input type="checkbox" name="attr_spelltypedescription" class="sheet-spelltypetab sheet-spelltypedesc" value="1" title="Desc."/>
 		
 				<div class="sheet-spell-type-attack">
 					<div class="sheet-row">
@@ -123,7 +152,7 @@ $spell_row = <<<'END'
 						<div class="sheet-col-1-12 sheet-center sheet-small-label">Macro</div>
 					</div>
 					
-					<div class="sheet-row sheet-footer-row">
+					<div class="sheet-row">
 						<div class="sheet-col-1-12">
 							<select name="attr_savespellsavestat">
 								<option value="STR">STR</option>
@@ -173,11 +202,10 @@ $spell_row = <<<'END'
 				
 				</div>
 		
-				<div class="sheet-spell-type-utility">
+				<div class="sheet-spell-type-desc">
 					<div class="sheet-row">
-						<div class="sheet-col-1-10 sheet-vert-middle sheet-small-label"><br/>Description<br/></div>
-						<div class="sheet-col-4-5"><textarea class="sheet-fluid-textarea" name="attr_utilityspelldescription"></textarea></div>
-						<div class="sheet-col-1-10 sheet-vert-middle"><button type="roll" class="sheet-roll" name="roll_UtilitySpell" value="/em uses @{spellname} \n\n@{utilityspelldescription}">Use</button></div>
+						<div class="sheet-col-1-10 sheet-vert-middle sheet-small-label sheet-center sheet-margin-top">Spell Description</div>
+						<div class="sheet-col-9-10"><textarea class="sheet-fluid-textarea" name="attr_spelldescription"></textarea></div>
 					</div>
 				</div>
 			
@@ -198,7 +226,7 @@ for ($i=$start; $i<=$max; $i++)
 	$return_text = "";
 	
 	if ($current_page == 0) $raw_level = "Cantrip";
-	else $raw_level = $current_page;
+	else $raw_level = "Level ". $current_page;
 	
 	// Add start of page wrapper
 	$return_text .= $wrapper_start;
