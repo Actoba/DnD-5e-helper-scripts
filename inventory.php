@@ -1,7 +1,7 @@
 <?php
 $filename = "inventory.html";
 $start = 1;
-$max = 90;
+$max = 40;
 
 $file = file_get_contents($filename);
 
