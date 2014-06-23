@@ -38,7 +38,7 @@ $spell_row = <<<'END'
 			
 			<fieldset class="repeating_spellbookSPELLSHORTLEVEL">
 			<!-- BEGIN spell row -->
-			<div class="sheet-grey-row sheet-margin-bottom sheet-padr sheet-padl">
+			<div class="sheet-margin-bottom sheet-padr sheet-padl">
 				<div class="sheet-row">
 					<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Spell Level</div>
 					<div class="sheet-col-1-3 sheet-vert-bottom sheet-center sheet-small-label">Spell name</div>
@@ -141,12 +141,13 @@ $spell_row = <<<'END'
 				<div class="sheet-spell-type-attack">
 				
 					<div class="sheet-row">
-						<div class="sheet-col-1-6 sheet-offset-1-3 sheet-vert-bottom sheet-center sheet-small-label">Attack Stat</div>
-						<div class="sheet-col-1-6 sheet-offset-1-3 sheet-vert-bottom sheet-center sheet-small-label">&nbsp;</div>
+						<div class="sheet-col-1-6 sheet-offset-2-3 sheet-vert-bottom sheet-center sheet-small-label">Attack Stat</div>
+						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">&nbsp;</div>
 					</div>
 							
 					<div class="sheet-row">
-						<div class="sheet-col-1-6 sheet-offset-1-3  sheet-small-label sheet-center">
+						<div class="sheet-col-2-3"><p class="sheet-small-note sheet-margin-top">Select the attack stat for the attack. This is normally your spellcasting stat from the class you gained the spell from.</p></div>
+						<div class="sheet-col-1-6 sheet-small-label sheet-center">
 							<select name="attr_attackstat">
 								<option value="0">None</option>
 								<option value="@{strength_mod}">STR</option>
@@ -157,7 +158,7 @@ $spell_row = <<<'END'
 								<option value="@{charisma_mod}">CHA</option>
 							</select>
 						</div>
-						<div class="sheet-col-1-6 sheet-offset-1-3 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Attack" value="/em uses @{spellname} to attack \n\n[[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] | [[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] vs AC">Attack</button></div>
+						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Attack" value="/em uses @{spellname} to attack \n\n[[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] | [[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] vs AC">Attack</button></div>
 					</div>
 				</div>
 		
