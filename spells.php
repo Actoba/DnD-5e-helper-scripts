@@ -234,7 +234,7 @@ $spell_row = <<<'END'
 							
 					<div class="sheet-row">
 						<div class="sheet-col-5-6 sheet-small-label sheet-center"><textarea name="attr_spelleffect" class="sheet-medium-textarea">None</textarea></div>
-						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellEffect" value="@{spelleffect}">Effect</button></div>
+						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellEffect" value="/em uses @{spellname}\n\n@{spelleffect}">Effect</button></div>
 					</div>
 				</div>
 
