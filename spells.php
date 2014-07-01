@@ -102,9 +102,9 @@ $spell_row = <<<'END'
 							<option value="Bard">Bard</option>
 							<option value="Cleric">Cleric</option>
 							<option value="Druid">Druid</option>
-							<option value="Mage">Mage</option>
 							<option value="Paladin">Paladin</option>
 							<option value="Ranger">Ranger</option>
+							<option value="Wizard">Wizard</option>
 							<option value="Other Source">Other</option>
 						</select>
 					</div>	
@@ -188,9 +188,9 @@ $spell_row = <<<'END'
 								<option value="@{bard_spell_dc}">Bard DC</option>
 								<option value="@{cleric_spell_dc}">Cleric DC</option>
 								<option value="@{druid_spell_dc}">Druid DC</option>
-								<option value="@{mage_spell_dc}">Mage DC</option>
 								<option value="@{paladin_spell_dc}">Paladin DC</option>
 								<option value="@{ranger_spell_dc}">Ranger DC</option>
+								<option value="@{wizard_spell_dc}">Wizard DC</option>
 							</select>
 						</div>
 						<div class="sheet-col-1-12"><input type="number" name="attr_customsavedc" value="0" min="0" step="1" title="Unless you have selected Custom in the previous field this should always be 0"></div>
