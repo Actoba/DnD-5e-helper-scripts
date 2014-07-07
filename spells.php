@@ -184,13 +184,14 @@ $spell_row = <<<'END'
 						</div>
 						<div class="sheet-col-1-8" title="Pick the class that the save DC will be created from or set your own DC by selecting custom here and then entering the DC in the next field">
 							<select name="attr_spellsavedc">
-								<option value="0">Custom DC</option>
+								<option value="0">Choose...</option>
 								<option value="@{bard_spell_dc}">Bard DC</option>
 								<option value="@{cleric_spell_dc}">Cleric DC</option>
 								<option value="@{druid_spell_dc}">Druid DC</option>
 								<option value="@{paladin_spell_dc}">Paladin DC</option>
 								<option value="@{ranger_spell_dc}">Ranger DC</option>
 								<option value="@{wizard_spell_dc}">Wizard DC</option>
+								<option value="0">Custom DC</option>
 							</select>
 						</div>
 						<div class="sheet-col-1-12"><input type="number" name="attr_customsavedc" value="0" min="0" step="1" title="Unless you have selected Custom in the previous field this should always be 0"></div>
