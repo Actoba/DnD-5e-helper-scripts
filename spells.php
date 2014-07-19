@@ -114,13 +114,15 @@ $spell_row = <<<'END'
 					<div class="sheet-col-7-24 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellcomponents"></div>
 				</div>
 				
+				<span class="sheet-spacer"></span>
 				<span class="sheet-small-label">Show :</span>
-				<input type="checkbox" name="attr_spelltypeadvanced" class="sheet-spelltypetab sheet-spelltypeadvanced" value="1" title="Advanced"/> |
-				<input type="checkbox" name="attr_spelltypeattack" class="sheet-spelltypetab sheet-spelltypeattack" value="1" title="Attack"/>
-				<input type="checkbox" name="attr_spelltypesave" class="sheet-spelltypetab sheet-spelltypesave" value="1" title="Save"/>
-				<input type="checkbox" name="attr_spelltypeheal" class="sheet-spelltypetab sheet-spelltypeheal" value="1" title="Healing"/> |
-				<input type="checkbox" name="attr_spelltypdamage" class="sheet-spelltypetab sheet-spelltypedamage" value="1" title="Damage"/>
-				<input type="checkbox" name="attr_spelltypeeffects" class="sheet-spelltypetab sheet-spelltypeeffects" value="1" title="Effects"/>
+				<input type="checkbox" name="attr_spelltypeadvanced" class="sheet-spelltypetab sheet-spelltypeadvanced" value="1"/><span class="sheet-spelltypetab sheet-spelltypeadvanced">Advanced</span> |
+				<input type="checkbox" name="attr_spelltypeattack" class="sheet-spelltypetab sheet-spelltypeattack" value="1"/><span class="sheet-spelltypetab sheet-spelltypeattack">Attack</span>
+				<input type="checkbox" name="attr_spelltypesave" class="sheet-spelltypetab sheet-spelltypesave" value="1"/><span class="sheet-spelltypetab sheet-spelltypesave">Save</span>
+				<input type="checkbox" name="attr_spelltypeheal" class="sheet-spelltypetab sheet-spelltypeheal" value="1"/><span class="sheet-spelltypetab sheet-spelltypeheal">Healing</span> |
+				<input type="checkbox" name="attr_spelltypdamage" class="sheet-spelltypetab sheet-spelltypedamage" value="1"/><span class="sheet-spelltypetab sheet-spelltypedamage">Damage</span>
+				<input type="checkbox" name="attr_spelltypeeffects" class="sheet-spelltypetab sheet-spelltypeeffects" value="1"/><span class="sheet-spelltypetab sheet-spelltypeeffects">Effects</span>
+				<span class="sheet-spacer"></span>
 				
 				<div class="sheet-spell-type-advanced">
 					<div class="sheet-row">
