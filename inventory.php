@@ -81,7 +81,7 @@ for ($i=$start; $i<=$max; $i++)
 	if ($i < $max) $weight_calc .= " + ";
 }
 
-$html_weight_calc = "<input type=\"hidden\" name=\"attr_inventory_weight_calc\" value=\"" . $weight_calc . "\" />";
+$html_weight_calc = "<input type=\"hidden\" name=\"attr_inventory_weight_calc\" value=\"(" . $weight_calc . ")\" />";
 
 $full_output .= $html_weight_calc;
 
