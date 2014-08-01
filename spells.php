@@ -206,12 +206,25 @@ $spell_row = <<<'END'
 				<div class="sheet-spell-type-heal">
 					<div class="sheet-row">
 						<div class="sheet-col-1-3 sheet-offset-1-4 sheet-vert-bottom sheet-center sheet-small-label">Heal amount</div>
-						<div class="sheet-col-1-6 sheet-offset-1-4 sheet-vert-bottom sheet-center sheet-small-label">&nbsp;</div>
+						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Stat Bonus</div>
+						<div class="sheet-col-1-6 sheet-offset-1-12 sheet-vert-bottom sheet-center sheet-small-label">&nbsp;</div>
 					</div>
 							
 					<div class="sheet-row">
 						<div class="sheet-col-1-3 sheet-offset-1-4 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_spellhealamount"></div>
-						<div class="sheet-col-1-6 sheet-offset-1-4 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Heal" value="/em uses @{spellname} to heal\n\n[[@{spellhealamount}]] hp healed\nAdditional effects: @{spelleffect}">Heal</button></div>
+						<div class="sheet-col-1-6 sheet-center">
+							<select name="attr_healstatbonus">
+								<option value="0">None</option>
+								<option value="@{strength_mod}">STR mod</option>
+								<option value="@{dexterity_mod}">DEX mod</option>
+								<option value="@{constitution_mod}">CON mod</option>
+								<option value="@{intelligence_mod}">INT mod</option>
+								<option value="@{wisdom_mod}">WIS mod</option>
+								<option value="@{charisma_mod}">CHA mod</option>
+							</select>
+						
+						</div>
+						<div class="sheet-col-1-6 sheet-offset-1-12 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Heal" value="/em uses @{spellname} to heal\n\n[[@{spellhealamount} + @{healstatbonus}]] hp healed\nAdditional effects: @{spelleffect}">Heal</button></div>
 					</div>
 				</div>
 				
@@ -237,7 +250,7 @@ $spell_row = <<<'END'
 								<option value="@{charisma_mod}">CHA mod</option>
 							</select>
 						</div>
-						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damagemiscbonus" value="0" step="1"></div>
+						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="number" class="sheet-center" name="attr_damagemiscbonus" value="0" step="1"></div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damagetype"></div>
 						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="[[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + @{global_spell_damage_bonus} [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage\nExtra [[@{damage}]] damage on a crit\nAdditional effects: @{spelleffect}">Damage</button></div>
 					</div>
