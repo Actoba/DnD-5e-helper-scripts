@@ -30,9 +30,9 @@ $melee_rows = <<<'END'
 		<div class="sheet-col-1-8" title="How is the weapon being wielded">
 			<select name="attr_meleeattackweildedCURRENTROW">
 				<option value="1">Main Hand</option>
-				<option value="1">2 Handed</option>
+				<option value="1.1">2 Handed</option>
 				<option value="0">Off Hand</option>
-				<option value="1">Off Hand (2weap fight style)</option>
+				<option value="1.2">Off Hand (2weap fight style)</option>
 			</select>
 		</div>
 		<div class="sheet-col-1-12">
@@ -45,7 +45,7 @@ $melee_rows = <<<'END'
 		<div class="sheet-col-1-24"><input type="number" name="attr_meleetohitCURRENTROW" value="@{meleeattackstatCURRENTROW} + @{pbmeleeCURRENTROW} + @{meleemagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeAttackCURRENTROW" value="/em uses @{meleeweaponnameCURRENTROW} to attack\n\n[[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_melee_attack_bonus} [Active Melee Attack Bonus] ]] | [[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_melee_attack_bonus} [Active Melee Attack Bonus] ]] vs AC" >Attack</button></div>
 		<div class="sheet-col-1-12" title="Only enter the base damage roll here without any bonuses from stats or other sources"><input class="sheet-center" type="text" name="attr_meleedmgCURRENTROW"></div>
-		<div class="sheet-col-1-24"><input type="number" name="attr_meleedmgbonusCURRENTROW" value="(@{meleeattackstatCURRENTROW} * @{meleeattackweildedCURRENTROW}) + @{meleemagicCURRENTROW}" disabled="disabled"></div>
+		<div class="sheet-col-1-24"><input type="number" name="attr_meleedmgbonusCURRENTROW" value="(@{meleeattackstatCURRENTROW} * floor(@{meleeattackweildedCURRENTROW})) + @{meleemagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-8"><input type="text" name="attr_meleedmgtypeCURRENTROW"></div>
 		<div class="sheet-col-1-8 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeDamageCURRENTROW" value="\nFor [[@{meleedmgCURRENTROW} [Base damage] + @{meleedmgbonusCURRENTROW} [Damage Bonus] + @{global_melee_damage_bonus} [Active Melee Damage Bonus] + 0d0 [Bugfix 0] ]] @{meleedmgtypeCURRENTROW} damage\nExtra [[@{meleedmgCURRENTROW}]] damage on a crit" >Damage</button></div>
 	</div>
