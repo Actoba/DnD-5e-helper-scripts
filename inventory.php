@@ -77,7 +77,7 @@ for ($i=$start; $i<=$max; $i++)
 $weight_calc = "";
 for ($i=$start; $i<=$max; $i++)
 {
-	$weight_calc .= "@{inventoryweight$i}";
+	$weight_calc .= "@{inventoryweight$i} + (((@{inventoryqty$i} - 1) * @{inventoryweight$i}) * @{weight_unit_setting})";
 	if ($i < $max) $weight_calc .= " + ";
 }
 
