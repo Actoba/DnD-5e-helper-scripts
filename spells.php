@@ -104,6 +104,8 @@ $spell_row = <<<'END'
 							<option value="Druid">Druid</option>
 							<option value="Paladin">Paladin</option>
 							<option value="Ranger">Ranger</option>
+							<option value="Sorcerer">Sorcerer</option>
+							<option value="Warlock">Warlock</option>
 							<option value="Wizard">Wizard</option>
 							<option value="Other Source">Other</option>
 						</select>
@@ -192,6 +194,8 @@ $spell_row = <<<'END'
 								<option value="@{druid_spell_dc}">Druid DC</option>
 								<option value="@{paladin_spell_dc}">Paladin DC</option>
 								<option value="@{ranger_spell_dc}">Ranger DC</option>
+								<option value="@{sorcerer_spell_dc}">Sorcerer DC</option>
+								<option value="@{warlock_spell_dc}">Warlock DC</option>
 								<option value="@{wizard_spell_dc}">Wizard DC</option>
 								<option value="0">Custom DC</option>
 							</select>
