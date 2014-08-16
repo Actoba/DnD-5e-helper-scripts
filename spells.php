@@ -32,7 +32,7 @@ $wrapper_end = <<<END
 END;
 
 $spell_row = <<<'END'
-			<div class="sheet-row sheet-sub-header">
+			<div class="sheet-row sheet-spell-header">
 				<div class="sheet-col-1 sheet-vert-bottom sheet-center sheet-small-label">SPELLLEVEL</div>
 			</div>
 			
@@ -78,11 +78,11 @@ $spell_row = <<<'END'
 							<option value="(Ritual)">Yes</option>
 						</select>
 					</div>
-					<div class="sheet-col-1-8 sheet-vert-middle" title="Always prepared means the spell is either a cantrip or one that was provided to you via a method which indicated it would never count against your prepared limit for the day">
-						<select name="attr_spellisprepared">
+					<div class="sheet-col-1-8 sheet-vert-middle" title="Always prepared means the spell is either a cantrip or one that was provided to you via a method which indicated it would never count against your prepared/known limits.">
+						<select name="attr_spellisprepared"DISABLEPREP>
 							<option value="1">Yes</option>
-							<option value="0" selected="selected">NO</option>
-							<option value="0.0001">Always</option>
+							<option value="0"SELECTEDPREPNO>NO</option>
+							<option value="0.0001"SELECTEDPREPALWAYS>Always</option>
 						</select>
 					</div>
 				</div>
@@ -99,9 +99,11 @@ $spell_row = <<<'END'
 					<div class="sheet-col-1-8 sheet-vert-middle" title="Use this field to indicate where you learned or have access to this spell from.  Useful to know if multiclassing or if you gain access to spells your class would not normally have thanks to subclass bonuses">
 						<select name="attr_spellgainedfrom">
 							<option value="Not Set">Not Set</option>
+							<option value="Arcane Trickster">Arcane Trickster</option>
 							<option value="Bard">Bard</option>
 							<option value="Cleric">Cleric</option>
 							<option value="Druid">Druid</option>
+							<option value="Eldritch Knight">Eldritch Knight</option>
 							<option value="Paladin">Paladin</option>
 							<option value="Ranger">Ranger</option>
 							<option value="Sorcerer">Sorcerer</option>
@@ -169,9 +171,9 @@ $spell_row = <<<'END'
 				<div class="sheet-spell-type-save">
 					<div class="sheet-row">
 						<div class="sheet-col-1-12 sheet-center sheet-small-label">Saving Stat</div>
-						<div class="sheet-col-1-8 sheet-center sheet-small-label">Save DC</div>
+						<div class="sheet-col-1-6 sheet-center sheet-small-label">Save DC</div>
 						<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom DC</div>
-						<div class="sheet-col-13-24 sheet-center sheet-small-label">On a successful save</div>
+						<div class="sheet-col-1-2 sheet-center sheet-small-label">On a successful save</div>
 						<div class="sheet-col-1-6 sheet-center sheet-small-label">&nbsp;</div>
 					</div>
 					
@@ -186,12 +188,14 @@ $spell_row = <<<'END'
 								<option value="CHA">CHA</option>
 							</select>
 						</div>
-						<div class="sheet-col-1-8" title="Pick the class that the save DC will be created from or set your own DC by selecting custom here and then entering the DC in the next field">
+						<div class="sheet-col-1-6" title="Pick the class that the save DC will be created from or set your own DC by selecting custom here and then entering the DC in the next field">
 							<select name="attr_spellsavedc">
 								<option value="0">Choose...</option>
+								<option value="@{arcane_trickster_spell_dc}">Arcane Trickster DC</option>
 								<option value="@{bard_spell_dc}">Bard DC</option>
 								<option value="@{cleric_spell_dc}">Cleric DC</option>
 								<option value="@{druid_spell_dc}">Druid DC</option>
+								<option value="@{eldritch_knight_spell_dc}">Eldritch Knight DC</option>
 								<option value="@{paladin_spell_dc}">Paladin DC</option>
 								<option value="@{ranger_spell_dc}">Ranger DC</option>
 								<option value="@{sorcerer_spell_dc}">Sorcerer DC</option>
@@ -201,7 +205,7 @@ $spell_row = <<<'END'
 							</select>
 						</div>
 						<div class="sheet-col-1-12"><input type="number" name="attr_customsavedc" value="0" min="0" step="1" title="Unless you have selected Custom in the previous field this should always be 0"></div>
-						<div class="sheet-col-13-24"><input type="text" class="sheet-center" name="attr_savesuccess"></div>
+						<div class="sheet-col-1-2"><input type="text" class="sheet-center" name="attr_savesuccess"></div>
 						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Save" value="/em uses @{spellname} to attack\n\nDC [[@{spellsavedc} + @{customsavedc}]] @{savestat} saving throw\nOn a successful save :\n@{savesuccess}" >Attack</button></div>
 						
 					</div>
@@ -305,8 +309,19 @@ for ($i=$start; $i<=$max; $i++)
 	$return_text = str_replace("SPELLLEVEL", $spell_level_array[$current_page], $return_text);
 	$return_text = str_replace("FRIENDLYLEVEL", $friendly_level, $return_text);
 	$return_text = str_replace("SPELLSHORTLEVEL", strtolower(str_replace(" ", "", $spell_level_array[$current_page])), $return_text);
-		
 	
+	if ($current_page == 0) 
+	{
+		$return_text = str_replace("DISABLEPREP", ' disabled="disabled"', $return_text);
+		$return_text = str_replace("SELECTEDPREPNO", '', $return_text);
+		$return_text = str_replace("SELECTEDPREPALWAYS", ' selected="selected"', $return_text);
+	}
+	else 
+	{
+		$return_text = str_replace("DISABLEPREP", '', $return_text);	
+		$return_text = str_replace("SELECTEDPREPALWAYS", '', $return_text);
+		$return_text = str_replace("SELECTEDPREPNO", ' selected="selected"', $return_text);
+	}
 	
 	$full_output .= $return_text;
 	$current_page++;
