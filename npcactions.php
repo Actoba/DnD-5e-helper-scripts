@@ -1,7 +1,7 @@
 <?php
 $filename = "npcactions.html";
 $start = 1;
-$max = 6;
+$max = 10;
 
 $file = file_get_contents($filename);
 
@@ -25,8 +25,8 @@ $action_rows = <<<'END'
 			<div class="sheet-col-1-6">
 				<select name="attr_npc_action_typeCURRENTROW">
 					<option value="(Normal Action) " selected="selected">Normal</option>
-					<option value="(Bonus Action) " selected="selected">Bonus</option>
-					<option value="(Reaction) " selected="selected">Reaction</option>
+					<option value="(Bonus Action) ">Bonus</option>
+					<option value="(Reaction) ">Reaction</option>
 					<option value="(Lair Action) ">Lair</option>
 					<option value="(Legendary Action) ">Legendary</option>
 					<option value="(Special Action) ">Other/Special</option>
@@ -34,11 +34,11 @@ $action_rows = <<<'END'
 			</div>
 			<div class="sheet-col-1-6 sheet-center">
 				<select name="attr_npc_action_multiattackCURRENTROW">
-					<option value=" " selected="selected">No</option>
-					<option value="@{npc_multiattack} - ">Yes</option>
+					<option value="No" selected="selected">No</option>
+					<option value="@{npc_multiattack}">Yes</option>
 				</select>
 			</div>
-			<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_NPCActionCURRENTROW" value="/w GM @{character_name} uses @{npc_action_nameCURRENTROW} : @{npc_action_typeCURRENTROW} \n/w GM Description : @{npc_action_multiattackCURRENTROW}@{npc_action_descriptionCURRENTROW}\n/w GM Effect :  @{npc_action_effectCURRENTROW}" >Use</button></div>
+			<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_NPCActionCURRENTROW" value="/w GM @{character_name} uses @{npc_action_nameCURRENTROW} : @{npc_action_typeCURRENTROW} \n/w GM Description : @{npc_action_descriptionCURRENTROW}\n/w GM Multiattack :  @{npc_action_multiattackCURRENTROW}\n/w GM Effect :  @{npc_action_effectCURRENTROW}" >Use</button></div>
 			
 		</div>
 		
