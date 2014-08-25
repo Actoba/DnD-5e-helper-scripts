@@ -238,7 +238,8 @@ $spell_row = <<<'END'
 				
 				<div class="sheet-spell-type-damage">
 					<div class="sheet-row">
-						<div class="sheet-col-1-6 sheet-offset-1-6 sheet-vert-bottom sheet-center sheet-small-label">Damage Dice</div>
+						<div class="sheet-col-1-12 sheet-offset-1-12 sheet-vert-bottom sheet-center sheet-small-label">Can Crit?</div>
+						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Damage Dice</div>
 						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Stat Bonus</div>
 						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Other Bonus</div>
 						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Damage Type</div>
@@ -246,7 +247,14 @@ $spell_row = <<<'END'
 					</div>
 							
 					<div class="sheet-row">
-						<div class="sheet-col-1-6 sheet-offset-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damage"></div>
+						<div class="sheet-col-1-12 sheet-offset-1-12">
+							<select name="attr_spellcrittext">
+								<option value=" (if a crit add an extra [[@{damage}]])" selected="selected">Yes</option>
+								<option value=".">No</option>
+								
+							</select>
+						</div>
+						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damage"></div>
 						<div class="sheet-col-1-6">
 							<select name="attr_damagestatbonus">
 								<option value="0">None</option>
@@ -260,7 +268,7 @@ $spell_row = <<<'END'
 						</div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="number" class="sheet-center" name="attr_damagemiscbonus" value="0" step="1"></div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damagetype"></div>
-						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="[[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + @{global_spell_damage_bonus} [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage\nExtra [[@{damage}]] damage on a crit\nAdditional effects: @{spelleffect}">Damage</button></div>
+						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="For [[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + @{global_spell_damage_bonus} [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage@{spellcrittext}">Damage</button></div>
 					</div>
 				</div>
 				

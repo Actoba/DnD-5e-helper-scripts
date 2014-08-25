@@ -47,7 +47,7 @@ $melee_rows = <<<'END'
 		<div class="sheet-col-1-12" title="Only enter the base damage roll here without any bonuses from stats or other sources"><input class="sheet-center" type="text" name="attr_meleedmgCURRENTROW"></div>
 		<div class="sheet-col-1-24"><input type="number" name="attr_meleedmgbonusCURRENTROW" value="(@{meleeattackstatCURRENTROW} * floor(@{meleeattackweildedCURRENTROW})) + @{meleemagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-8"><input type="text" name="attr_meleedmgtypeCURRENTROW"></div>
-		<div class="sheet-col-1-8 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeDamageCURRENTROW" value="\nFor [[@{meleedmgCURRENTROW} [Base damage] + @{meleedmgbonusCURRENTROW} [Damage Bonus] + @{global_melee_damage_bonus} [Active Melee Damage Bonus] + 0d0 [Bugfix 0] ]] @{meleedmgtypeCURRENTROW} damage\nExtra [[@{meleedmgCURRENTROW}]] damage on a crit" >Damage</button></div>
+		<div class="sheet-col-1-8 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeDamageCURRENTROW" value="\nFor [[@{meleedmgCURRENTROW} [Base damage] + @{meleedmgbonusCURRENTROW} [Damage Bonus] + @{global_melee_damage_bonus} [Active Melee Damage Bonus] + 0d0 [Bugfix 0] ]] @{meleedmgtypeCURRENTROW} damage (if a crit add an extra [[@{meleedmgCURRENTROW}]])" >Damage</button></div>
 	</div>
 	<!-- END melee weapon row -->
 
@@ -90,7 +90,7 @@ $ranged_rows = <<<'END'
 		<div class="sheet-col-1-12" title="Only enter the base damage roll here without any bonuses from stats or other sources"><input class="sheet-center" type="text" name="attr_rangeddmgCURRENTROW"></div>		
 		<div class="sheet-col-1-24"><input type="number" name="attr_rangeddmgbonusCURRENTROW" value="@{rangedtypeCURRENTROW} + @{rangedmagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-8"><input type="text" name="attr_rangeddmgtypeCURRENTROW"></div>
-		<div class="sheet-col-1-8 sheet-center"><button type="roll" class="sheet-roll" name="roll_RangedDamageCURRENTROW" value="\nFor [[@{rangeddmgCURRENTROW} [Base damage] + @{rangeddmgbonusCURRENTROW} [Damage Bonus] + @{global_ranged_damage_bonus} [Active Ranged Damage Bonus] + 0d0 [Bugfix 0] ]] @{rangeddmgtypeCURRENTROW} damage\nExtra [[@{rangeddmgCURRENTROW}]] damage on a crit" >Damage</button></div>
+		<div class="sheet-col-1-8 sheet-center"><button type="roll" class="sheet-roll" name="roll_RangedDamageCURRENTROW" value="\nFor [[@{rangeddmgCURRENTROW} [Base damage] + @{rangeddmgbonusCURRENTROW} [Damage Bonus] + @{global_ranged_damage_bonus} [Active Ranged Damage Bonus] + 0d0 [Bugfix 0] ]] @{rangeddmgtypeCURRENTROW} damage (if a crit add an extra [[@{rangeddmgCURRENTROW}]])" >Damage</button></div>
 	</div>
 	<!-- END ranged weapon row -->
 
