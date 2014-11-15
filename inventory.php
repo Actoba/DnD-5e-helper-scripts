@@ -11,10 +11,11 @@ $wrapper_start = <<<END
 			
 				<div class="sheet-row sheet-sub-header">	
 					<div class="sheet-col-1-15 sheet-center sheet-small-label">Row #</div>
+					<div class="sheet-col-1-15 sheet-center sheet-small-label">Carried?</div>
 					<div class="sheet-col-1-15 sheet-center sheet-small-label">Qty</div>
 					<div class="sheet-col-4-15 sheet-center sheet-small-label">Name</div>
 					<div class="sheet-col-2-15 sheet-center sheet-small-label">Weight</div>
-					<div class="sheet-col-7-15 sheet-center sheet-small-label">Descripton</div>
+					<div class="sheet-col-6-15 sheet-center sheet-small-label">Descripton</div>
 				</div>
 				
 END;
@@ -31,10 +32,11 @@ $inventory_rows = <<<'END'
 		
 		<div class="sheet-row sheet-grey-row">
 			<div class="sheet-col-1-15 sheet-vert-middle sheet-inventory-row-number">CURRENTROW</div>
+			<div class="sheet-col-1-15 sheet-vert-middle sheet-checkbox-row"><input type="checkbox" name="attr_inventorycarriedCURRENTROW" value="@{inventoryweightCURRENTROW}" /></div>
 			<div class="sheet-col-1-15"><input type="number" name="attr_inventoryqtyCURRENTROW" value="1" min="0" step="1"></div>
 			<div class="sheet-col-4-15"><input type="text" name="attr_inventorynameCURRENTROW"></div>
 			<div class="sheet-col-2-15"><input type="number" name="attr_inventoryweightCURRENTROW" value="0" step="0.01"></div>
-			<div class="sheet-col-7-15"><input type="text" name="attr_inventorydescriptionCURRENTROW"></div>
+			<div class="sheet-col-6-15"><input type="text" name="attr_inventorydescriptionCURRENTROW"></div>
 		</div>
 			
 	</div>
@@ -77,7 +79,7 @@ for ($i=$start; $i<=$max; $i++)
 $weight_calc = "";
 for ($i=$start; $i<=$max; $i++)
 {
-	$weight_calc .= "@{inventoryweight$i} + (((@{inventoryqty$i} - 1) * @{inventoryweight$i}) * @{weight_unit_setting})";
+	$weight_calc .= "@{inventorycarried$i} + (((@{inventoryqty$i} - 1) * @{inventorycarried$i}) * @{weight_unit_setting})";
 	if ($i < $max) $weight_calc .= " + ";
 }
 
