@@ -164,7 +164,7 @@ $spell_row = <<<'END'
 								<option value="@{charisma_mod}">CHA</option>
 							</select>
 						</div>
-						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Attack" value="/em uses @{spellname} to attack \n\n[[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] | [[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + @{global_spell_attack_bonus} [Active Spell Attack Bonus] ]] vs AC">Attack</button></div>
+						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Attack" value="/em uses @{spellname} to attack \n\n[[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + (@{global_spell_attack_bonus}) [Active Spell Attack Bonus] ]] | [[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + (@{global_spell_attack_bonus}) [Active Spell Attack Bonus] ]] vs AC">Attack</button></div>
 					</div>
 				</div>
 		
@@ -268,7 +268,7 @@ $spell_row = <<<'END'
 						</div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="number" class="sheet-center" name="attr_damagemiscbonus" value="0" step="1"></div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damagetype"></div>
-						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="For [[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + @{global_spell_damage_bonus} [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage@{spellcrittext}">Damage</button></div>
+						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="For [[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + (@{global_spell_damage_bonus}) [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage@{spellcrittext}">Damage</button></div>
 					</div>
 				</div>
 				
