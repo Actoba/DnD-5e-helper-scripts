@@ -32,7 +32,7 @@ $inventory_rows = <<<'END'
 		
 		<div class="sheet-row sheet-grey-row">
 			<div class="sheet-col-1-15 sheet-vert-middle sheet-inventory-row-number">CURRENTROW</div>
-			<div class="sheet-col-1-15 sheet-vert-middle sheet-checkbox-row"><input type="checkbox" name="attr_inventorycarriedCURRENTROW" value="@{inventoryweightCURRENTROW}" /></div>
+			<div class="sheet-col-1-15 sheet-vert-middle sheet-checkbox-row"><input type="checkbox" name="attr_inventorycarriedCURRENTROW" value="@{inventoryweightCURRENTROW}" checked="checked" /></div>
 			<div class="sheet-col-1-15"><input type="number" name="attr_inventoryqtyCURRENTROW" value="1" min="0" step="1"></div>
 			<div class="sheet-col-4-15"><input type="text" name="attr_inventorynameCURRENTROW"></div>
 			<div class="sheet-col-2-15"><input type="number" name="attr_inventoryweightCURRENTROW" value="0" step="0.01"></div>
