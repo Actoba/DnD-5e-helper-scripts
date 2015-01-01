@@ -268,7 +268,7 @@ $spell_row = <<<'END'
 						</div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="number" class="sheet-center" name="attr_damagemiscbonus" value="0" step="1"></div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damagetype"></div>
-						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="For [[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + (@{global_spell_damage_bonus}) [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage@{spellcrittext}">Damage</button></div>
+						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="For [[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + (@{global_spell_damage_bonus}) [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage@{spellcrittext}\nAdditional effects: @{spelleffect}">Damage</button></div>
 					</div>
 				</div>
 				
