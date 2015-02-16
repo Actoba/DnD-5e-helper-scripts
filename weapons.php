@@ -9,16 +9,17 @@ $melee_header = <<<END
 		<h4 class="sheet-center">Melee Weapons <span class="sheet-pictos">D</span></h4>
 		<div class="sheet-row sheet-sub-header">
 			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom">Prof?</div>
-			<div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-bottom">Weapon</div>
-			<div class="sheet-col-1-8 sheet-center sheet-small-label sheet-vert-bottom">Wielded</div>
+			<div class="sheet-col-1-8 sheet-center sheet-small-label sheet-vert-bottom">Weapon</div>
+			<div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-bottom">Properties</div>
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Finesse?</div>
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom sheet-padr">Magic Bonus</div>
-			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom">To<br/>Hit</div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Attack</div>
+			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom sheet-padr">To<br/>Hit</div>
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Damage Dice</div>
+			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom">+ stat?</div>
 			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom">Dmg<br/>Bonus</div>
+			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Crit Dmg</div>
 			<div class="sheet-col-1-8 sheet-center sheet-small-label sheet-vert-bottom">Damage Type</div>
-			<div class="sheet-col-1-8 sheet-center sheet-small-label sheet-vert-bottom">Damage</div>
+			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Attack</div>
 		</div>
 END;
 
@@ -26,15 +27,8 @@ $melee_rows = <<<'END'
 	<!-- BEGIN melee weapon row -->
 	<div class="sheet-row">
 		<div class="sheet-col-1-24 sheet-checkbox-row"><input type="checkbox" value="@{PB}" name="attr_pbmeleeCURRENTROW" checked="checked"></div>
-		<div class="sheet-col-1-6"><input type="text" name="attr_meleeweaponnameCURRENTROW"></div>
-		<div class="sheet-col-1-8" title="How is the weapon being wielded">
-			<select name="attr_meleeattackweildedCURRENTROW">
-				<option value="1">Main Hand</option>
-				<option value="1.1">2 Handed</option>
-				<option value="0">Off Hand</option>
-				<option value="1.2">Off Hand (2weap fight style)</option>
-			</select>
-		</div>
+		<div class="sheet-col-1-8"><input type="text" name="attr_meleeweaponnameCURRENTROW"></div>
+		<div class="sheet-col-1-6"><input type="text" name="attr_meleeweaponpropsCURRENTROW"></div>
 		<div class="sheet-col-1-12">
 			<select name="attr_meleeattackstatCURRENTROW">
 				<option value="@{strength_mod}">No</option>
@@ -42,12 +36,13 @@ $melee_rows = <<<'END'
 			</select>
 		</div>
 		<div class="sheet-col-1-12 sheet-padr" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_meleemagicCURRENTROW" value="0" step="1"></div>
-		<div class="sheet-col-1-24"><input type="number" name="attr_meleetohitCURRENTROW" value="@{meleeattackstatCURRENTROW} + @{pbmeleeCURRENTROW} + @{meleemagicCURRENTROW}" disabled="disabled"></div>
-		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeAttackCURRENTROW" value="/em uses @{meleeweaponnameCURRENTROW} to attack\n\n[[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_melee_attack_bonus} [Active Melee Attack Bonus] ]] | [[1d20 + @{meleetohitCURRENTROW} [To Hit] + @{global_melee_attack_bonus} [Active Melee Attack Bonus] ]] vs AC" >Attack</button></div>
+		<div class="sheet-col-1-24 sheet-padr"><input type="number" name="attr_meleetohitCURRENTROW" value="@{meleeattackstatCURRENTROW} + @{pbmeleeCURRENTROW} + @{meleemagicCURRENTROW}" disabled="disabled"></div>
 		<div class="sheet-col-1-12" title="Only enter the base damage roll here without any bonuses from stats or other sources"><input class="sheet-center" type="text" name="attr_meleedmgCURRENTROW"></div>
-		<div class="sheet-col-1-24"><input type="number" name="attr_meleedmgbonusCURRENTROW" value="(@{meleeattackstatCURRENTROW} * floor(@{meleeattackweildedCURRENTROW})) + @{meleemagicCURRENTROW}" disabled="disabled"></div>
+		<div class="sheet-col-1-24 sheet-checkbox-row"><input type="checkbox" value="1" name="attr_meleeattackstatdmgCURRENTROW" checked="checked"></div>
+		<div class="sheet-col-1-24"><input type="number" name="attr_meleedmgbonusCURRENTROW" value="(@{meleeattackstatCURRENTROW} * @{meleeattackstatdmgCURRENTROW}) + @{meleemagicCURRENTROW}" disabled="disabled"></div>
+		<div class="sheet-col-1-12"><input class="sheet-center" type="text" name="attr_meleecritdmgCURRENTROW"></div>
 		<div class="sheet-col-1-8"><input type="text" name="attr_meleedmgtypeCURRENTROW"></div>
-		<div class="sheet-col-1-8 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeDamageCURRENTROW" value="\nFor [[@{meleedmgCURRENTROW} [Base damage] + @{meleedmgbonusCURRENTROW} [Damage Bonus] + @{global_melee_damage_bonus} [Active Melee Damage Bonus] + 0d0 [Bugfix 0] ]] @{meleedmgtypeCURRENTROW} damage (if a crit add an extra [[@{meleedmgCURRENTROW}]])" >Damage</button></div>
+		<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_MeleeAttackCURRENTROW" value="&{template:5eDefault} {{weapon=1}} {{title=@{character_name}}} {{subheader=@{meleeweaponnameCURRENTROW} &bullet; @{meleeweaponpropsCURRENTROW}}} {{attack=[[1d20 + @{meleetohitCURRENTROW} + (@{global_melee_attack_bonus}) ]]}} {{attackadv=[[1d20 + @{meleetohitCURRENTROW} + (@{global_melee_attack_bonus}) ]]}} {{damage=[[@{meleedmgCURRENTROW} + @{meleedmgbonusCURRENTROW} + (@{global_melee_damage_bonus})  + 0d0]] @{meleedmgtypeCURRENTROW}}} {{critdamage=Additional [[@{meleecritdmgCURRENTROW}]] damage}}" >Attack</button></div>
 	</div>
 	<!-- END melee weapon row -->
 
