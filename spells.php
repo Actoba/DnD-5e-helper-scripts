@@ -89,10 +89,12 @@ $spell_row = <<<'END'
 				
 				<div class="sheet-row">
 					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Gained from</div>
-					<div class="sheet-col-1-3 sheet-vert-bottom sheet-center sheet-small-label">Target/Area of Effect</div>					
+					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Target/Area of Effect</div>					
 					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Range</div>
 					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Duration</div>
-					<div class="sheet-col-7-24 sheet-vert-bottom sheet-center sheet-small-label">Components</div>
+					<div class="sheet-col-1-8 sheet-vert-bottom sheet-center sheet-small-label">Components</div>
+					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Spell Info</div>
+					<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Cast Spell</div>
 				</div>
 				
 				<div class="sheet-row">
@@ -112,10 +114,12 @@ $spell_row = <<<'END'
 							<option value="Other Source">Other</option>
 						</select>
 					</div>	
-					<div class="sheet-col-1-3 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spelltarget"></div>
+					<div class="sheet-col-1-6 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spelltarget"></div>
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellrange"></div>
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellduration"></div>
-					<div class="sheet-col-7-24 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellcomponents"></div>
+					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellcomponents"></div>
+					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellInfo" value="&{template:5eDefault} {{spell=1}} {{spellcard=1}} {{title=@{character_name}}} {{subheader=Spellcard for @{spellname}}} {{spellname=@{spellname}}} {{spellfriendlylevel=@{spellfriendlylevel}}} {{spellschool=@{spellschool}}} {{spellcasttime=@{spellcasttime}}} {{spellduration=@{spellduration}}} {{spelldescription=@{spelldescription}}} {{spellhigherlevel=@{spellhighersloteffect}}} ">Spell Info</button></div>
+					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellCast" value="Cast Spell">Cast Spell</button></div>
 				</div>
 				
 				<span class="sheet-spacer"></span>
