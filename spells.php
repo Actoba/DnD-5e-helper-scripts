@@ -118,7 +118,7 @@ $spell_row = <<<'END'
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellrange"></div>
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellduration"></div>
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellcomponents"></div>
-					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellInfo" value="&{template:5eDefault} {{spell=1}} {{spellcard=1}} {{title=@{character_name}}} {{subheader=Spellcard for @{spellname}}} {{spellname=@{spellname}}} {{spellfriendlylevel=@{spellfriendlylevel}}} {{spellschool=@{spellschool}}} {{spellcasttime=@{spellcasttime}}} {{spellduration=@{spellduration}}} {{spelldescription=@{spelldescription}}} {{spellhigherlevel=@{spellhighersloteffect}}} ">Spell Info</button></div>
+					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellInfo" value="&{template:5eDefault} {{spell=1}} {{spellcard=1}} {{character_name=@{character_name}}} {{emote=looks at the instructions for a spell}} {{title=@{spellname}}} {{subheader=@{spellconcentration} @{spellritual}}}  {{spellfriendlylevel=@{spellfriendlylevel}}} {{spellschool=@{spellschool}}} {{spellcasttime=@{spellcasttime}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spellrange=@{spellrange}}} {{spellgainedfrom=@{spellgainedfrom}}} {{spellcomponents=@{spellcomponents}}}  {{spelltags=@{spellconcentration} @{spellritual}}} {{spelldescription=@{spelldescription}}} {{spellhigherlevel=@{spellhighersloteffect}}} ">Spell Info</button></div>
 					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellCast" value="Cast Spell">Cast Spell</button></div>
 				</div>
 				
@@ -135,14 +135,12 @@ $spell_row = <<<'END'
 				<div class="sheet-spell-type-advanced">
 					<div class="sheet-row">
 						<div class="sheet-col-1-2 sheet-vert-bottom sheet-center sheet-small-label">Spell Description/Flavour</div>
-						<div class="sheet-col-1-3 sheet-vert-bottom sheet-center sheet-small-label">Higher Spell Slot Effect</div>
-						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">&nbsp;</div>
+						<div class="sheet-col-1-2 sheet-vert-bottom sheet-center sheet-small-label">Higher Spell Slot Effect</div>
 					</div>
 					
 					<div class="sheet-row">
 						<div class="sheet-col-1-2 sheet-small-label sheet-center"><textarea class="sheet-medium-textarea" name="attr_spelldescription"></textarea></div>
-						<div class="sheet-col-1-3 sheet-small-label sheet-center"><textarea name="attr_spellhighersloteffect" class="sheet-medium-textarea"></textarea></div>
-						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellInfo" value="/em looks at the details for @{spellname}\n\nName : @{spellname}\n@{spellschool} @{spellfriendlylevel}\nCast time : @{spellcasttime}\nRange : @{spellrange}\nDuration : @{spellduration}\n\n@{spellconcentration} @{spellritual}\n\nDescription : \n@{spelldescription}\n\n\nAt Higher Levels :\n@{spellhighersloteffect}">Spell Card</button></div>
+						<div class="sheet-col-1-2 sheet-small-label sheet-center"><textarea name="attr_spellhighersloteffect" class="sheet-medium-textarea"></textarea></div>
 					</div>
 				
 				
