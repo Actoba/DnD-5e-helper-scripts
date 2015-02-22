@@ -118,13 +118,26 @@ $spell_row = <<<'END'
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellrange"></div>
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellduration"></div>
 					<div class="sheet-col-1-8 sheet-vert-middle"><input type="text" class="sheet-center" name="attr_spellcomponents"></div>
-					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellInfo" value="&{template:5eDefault} {{spell=1}} {{spellcard=1}} {{character_name=@{character_name}}} {{emote=looks at the instructions for a spell}} {{title=@{spellname}}} {{subheader=@{spellconcentration} @{spellritual}}}  {{spellfriendlylevel=@{spellfriendlylevel}}} {{spellschool=@{spellschool}}} {{spellcasttime=@{spellcasttime}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spellrange=@{spellrange}}} {{spellgainedfrom=@{spellgainedfrom}}} {{spellcomponents=@{spellcomponents}}}  {{spelltags=@{spellconcentration} @{spellritual}}} {{spelldescription=@{spelldescription}}} {{spellhigherlevel=@{spellhighersloteffect}}} ">Spell Info</button></div>
-					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellCast" value="Cast Spell">Cast Spell</button></div>
+					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellInfo" value="&{template:5eDefault} {{spell=1}} {{spellcard=1}} {{character_name=@{character_name}}} {{emote=looks at the instructions for a spell}} {{title=@{spellname}}} {{subheader=@{spellfriendlylevel}}} {{subheaderright=@{spellschool}}} {{subheader2=@{spellconcentration} @{spellritual}}}  {{spellcasttime=@{spellcasttime}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spellrange=@{spellrange}}} {{spellgainedfrom=@{spellgainedfrom}}} {{spellcomponents=@{spellcomponents}}}  {{spelldescription=@{spelldescription}}} {{spellhigherlevel=@{spellhighersloteffect}}} ">Spell Info</button></div>
+					<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellCast" value="&{template:5eDefault} {{spell=1}} {{title=@{spellname}}} {{subheader=@{spellfriendlylevel}}} {{subheaderright=@{spellschool}}} {{subheader2=@{spellconcentration} @{spellritual}}} @{spellcastmacrooptions} {{spellcasttime=@{spellcasttime}}} {{spellduration=@{spellduration}}} {{spelltarget=@{spelltarget}}} {{spellrange=@{spellrange}}} {{spellgainedfrom=@{spellgainedfrom}}} {{spellcomponents=@{spellcomponents}}}  {{spellattack=[[1d20 + @{attackstat} + @{PB} + (@{global_spell_attack_bonus})]]}} {{spellattackadv=[[1d20 + @{attackstat} + @{PB} + (@{global_spell_attack_bonus})]]}} {{spellsavedc=[[@{spellsavedc} + @{customsavedc}]]}} {{spellsavestat=@{savestat}}} {{spellsavesuccess=@{savesuccess}}} {{spellhealing=[[@{spellhealamount} + @{healstatbonus}]]}}  {{spelldamage=[[@{damage} + @{damagestatbonus} + @{damagemiscbonus} + (@{global_spell_damage_bonus}) + 0d0]] @{damagetype}}} {{spelleffect=@{spelleffect}}} ">Cast Spell</button></div>
+				</div>
+				
+				<div class="sheet-row sheet-padb sheet-spell-macro-output-options">
+					<div class="sheet-col-1-8 sheet-vert-middle sheet-small-label sheet-padl">Spellcast macro display options</div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">Info block<br/><input type="checkbox" name="attr_spellshowinfoblock" value="{{spellshowinfoblock=1}}" /></div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">Attack roll<br/><input type="checkbox" name="attr_spellshowattack" value="{{spellshowattack=1}}" /></div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">2nd Attack roll<br/><input type="checkbox" name="attr_spellshowattackadv" value="{{spellshowattackadv=1}}" /></div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">Saving throw<br/><input type="checkbox" name="attr_spellshowsavethrow" value="{{spellshowsavethrow=1}}" /></div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">Healing<br/><input type="checkbox" name="attr_spellshowhealing" value="{{spellshowhealing=1}}" /></div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">Damage<br/><input type="checkbox" name="attr_spellshowdamage" value="{{spellshowdamage=1}}" /></div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">Effects<br/><input type="checkbox" name="attr_spellshoweffects" value="{{spellshoweffects=1}}" /></div>
+					
+					<input type="hidden" name="attr_spellcastmacrooptions" value="@{spellshowinfoblock} @{spellshowattack} @{spellshowattackadv} @{spellshowsavethrow} @{spellshowhealing} @{spellshowdamage} @{spellshoweffects} @{spellcancrit}" />
 				</div>
 				
 				<span class="sheet-spacer"></span>
 				<span class="sheet-small-label">Show :</span>
-				<input type="checkbox" name="attr_spelltypeadvanced" class="sheet-spelltypetab sheet-spelltypeadvanced" value="1"/><span class="sheet-spelltypetab sheet-spelltypeadvanced">Advanced</span> |
+				<input type="checkbox" name="attr_spelltypeadvanced" class="sheet-spelltypetab sheet-spelltypeadvanced" value="1"/><span class="sheet-spelltypetab sheet-spelltypeadvanced">Description</span> |
 				<input type="checkbox" name="attr_spelltypeattack" class="sheet-spelltypetab sheet-spelltypeattack" value="1"/><span class="sheet-spelltypetab sheet-spelltypeattack">Attack</span>
 				<input type="checkbox" name="attr_spelltypesave" class="sheet-spelltypetab sheet-spelltypesave" value="1"/><span class="sheet-spelltypetab sheet-spelltypesave">Save</span>
 				<input type="checkbox" name="attr_spelltypeheal" class="sheet-spelltypetab sheet-spelltypeheal" value="1"/><span class="sheet-spelltypetab sheet-spelltypeheal">Healing</span> |
@@ -166,7 +179,6 @@ $spell_row = <<<'END'
 								<option value="@{charisma_mod}">CHA</option>
 							</select>
 						</div>
-						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Attack" value="/em uses @{spellname} to attack \n\n[[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + (@{global_spell_attack_bonus}) [Active Spell Attack Bonus] ]] | [[1d20 + @{attackstat} [Attack stat mod] + @{PB} [Proficiency Bonus] + (@{global_spell_attack_bonus}) [Active Spell Attack Bonus] ]] vs AC">Attack</button></div>
 					</div>
 				</div>
 		
@@ -208,7 +220,6 @@ $spell_row = <<<'END'
 						</div>
 						<div class="sheet-col-1-12"><input type="number" name="attr_customsavedc" value="0" min="0" step="1" title="Unless you have selected Custom in the previous field this should always be 0"></div>
 						<div class="sheet-col-1-2"><input type="text" class="sheet-center" name="attr_savesuccess"></div>
-						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Save" value="/em uses @{spellname} to attack\n\nDC [[@{spellsavedc} + @{customsavedc}]] @{savestat} saving throw\nOn a successful save :\n@{savesuccess}" >Attack</button></div>
 						
 					</div>
 				</div>
@@ -221,7 +232,7 @@ $spell_row = <<<'END'
 					</div>
 							
 					<div class="sheet-row">
-						<div class="sheet-col-1-3 sheet-offset-1-4 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_spellhealamount"></div>
+						<div class="sheet-col-1-3 sheet-offset-1-4 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_spellhealamount" value="0"></div>
 						<div class="sheet-col-1-6 sheet-center">
 							<select name="attr_healstatbonus">
 								<option value="0">None</option>
@@ -234,13 +245,13 @@ $spell_row = <<<'END'
 							</select>
 						
 						</div>
-						<div class="sheet-col-1-6 sheet-offset-1-12 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_Heal" value="/em uses @{spellname} to heal\n\n[[@{spellhealamount} + @{healstatbonus}]] hp healed\nAdditional effects: @{spelleffect}">Heal</button></div>
 					</div>
 				</div>
 				
 				<div class="sheet-spell-type-damage">
 					<div class="sheet-row">
-						<div class="sheet-col-1-12 sheet-offset-1-12 sheet-vert-bottom sheet-center sheet-small-label">Can Crit?</div>
+						<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Can Crit?</div>
+						<div class="sheet-col-1-12 sheet-vert-bottom sheet-center sheet-small-label">Can Crit?</div>
 						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Damage Dice</div>
 						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Stat Bonus</div>
 						<div class="sheet-col-1-6 sheet-vert-bottom sheet-center sheet-small-label">Other Bonus</div>
@@ -249,14 +260,15 @@ $spell_row = <<<'END'
 					</div>
 							
 					<div class="sheet-row">
-						<div class="sheet-col-1-12 sheet-offset-1-12">
+						<div class="sheet-col-1-12 sheet-checkbox-row"><input type="checkbox" name="attr_spellcancrit" value="{{spellcancrit=1}} {{spellcritdamage=Additional [[@{damage}]] damage}}" checked="checked"/></div>
+						<div class="sheet-col-1-12 ">
 							<select name="attr_spellcrittext">
 								<option value=" (if a crit add an extra [[@{damage}]])" selected="selected">Yes</option>
 								<option value=".">No</option>
 								
 							</select>
 						</div>
-						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damage"></div>
+						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damage" value="0"></div>
 						<div class="sheet-col-1-6">
 							<select name="attr_damagestatbonus">
 								<option value="0">None</option>
@@ -270,7 +282,7 @@ $spell_row = <<<'END'
 						</div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="number" class="sheet-center" name="attr_damagemiscbonus" value="0" step="1"></div>
 						<div class="sheet-col-1-6 sheet-small-label sheet-center"><input type="text" class="sheet-center" name="attr_damagetype"></div>
-						<div class="sheet-col-1-6 sheet-center"><button type="roll" class="sheet-roll" name="roll_Damage" value="For [[@{damage} [Base Spell Damage] + @{damagestatbonus} + @{damagemiscbonus} + (@{global_spell_damage_bonus}) [Active Spell Damage Bonus] + 0d0 [Bugfix 0]]] @{damagetype} damage@{spellcrittext}\nAdditional effects: @{spelleffect}">Damage</button></div>
+						
 					</div>
 				</div>
 				
@@ -281,8 +293,7 @@ $spell_row = <<<'END'
 					</div>
 							
 					<div class="sheet-row">
-						<div class="sheet-col-5-6 sheet-small-label sheet-center"><textarea name="attr_spelleffect" class="sheet-medium-textarea">None</textarea></div>
-						<div class="sheet-col-1-6 sheet-vert-middle sheet-center"><button type="roll" class="sheet-roll" name="roll_SpellEffect" value="/em uses @{spellname}\n\n@{spelleffect}">Effect</button></div>
+						<div class="sheet-col-1 sheet-small-label sheet-center"><textarea name="attr_spelleffect" class="sheet-medium-textarea">None</textarea></div>
 					</div>
 				</div>
 
