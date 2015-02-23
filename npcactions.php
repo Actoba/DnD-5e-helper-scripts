@@ -1,7 +1,7 @@
 <?php
 $filename = "npcactions.html";
 $start = 1;
-$max = 10;
+$max = 20;
 
 $file = file_get_contents($filename);
 
@@ -32,13 +32,10 @@ $action_rows = <<<'END'
 					<option value="(Special Action) ">Other/Special</option>
 				</select>
 			</div>
-			<div class="sheet-col-1-6 sheet-center">
-				<select name="attr_npc_action_multiattackCURRENTROW">
-					<option value="No" selected="selected">No</option>
-					<option value="@{npc_multiattack}">Yes</option>
-				</select>
+			<div class="sheet-col-1-6 sheet-center sheet-checkbox-row">
+				<input type="checkbox" name="attr_npc_action_multiattackCURRENTROW" value="{{npc_showmultiattack=1}} {{npc_multiattack=@{npc_multiattack}}}" \>
 			</div>
-			<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_NPCActionCURRENTROW" value="/w GM @{character_name} uses @{npc_action_nameCURRENTROW} : @{npc_action_typeCURRENTROW} \n/w GM Description : @{npc_action_descriptionCURRENTROW}\n/w GM Multiattack :  @{npc_action_multiattackCURRENTROW}\n/w GM Effect :  @{npc_action_effectCURRENTROW}" >Use</button></div>
+			<div class="sheet-col-1-12 sheet-center"><button type="roll" class="sheet-roll" name="roll_NPCActionCURRENTROW" value="/w GM &{template:5eDefault} {{npcaction=1}} {{title=@{npc_action_nameCURRENTROW}}} {{subheader=@{character_name}}} {{subheaderright=@{npc_action_typeCURRENTROW}}} @{npc_action_multiattackCURRENTROW} {{npc_action_description=@{npc_action_descriptionCURRENTROW}}} {{npc_action_effect=@{npc_action_effectCURRENTROW}}}" >Use</button></div>
 			
 		</div>
 		
