@@ -152,10 +152,10 @@ $classaction_rows = <<<'END'
 			
 			<div class="sheet-row">
 			
-				<div class="sheet-offset-1-7 sheet-col-1-12 sheet-center sheet-small-label">Custom 1<br/><input type="checkbox" name="attr_classactioncustomskill1-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
-				<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom 2<br/><input type="checkbox" name="attr_classactioncustomskill2-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
-				<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom 3<br/><input type="checkbox" name="attr_classactioncustomskill3-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
-				<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-border-right">Custom 4<br/><input type="checkbox" name="attr_classactioncustomskill4-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-offset-1-7 sheet-col-1-12 sheet-center sheet-small-label">Custom 1<br/><input type="checkbox" name="attr_classactioncustom1skillCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom 2<br/><input type="checkbox" name="attr_classactioncustom2skillCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom 3<br/><input type="checkbox" name="attr_classactioncustom3skillCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-border-right">Custom 4<br/><input type="checkbox" name="attr_classactioncustom4skillCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
 				
 				
 				<div class="sheet-col-1-18 sheet-center sheet-small-label">STR<br/><input type="checkbox" name="attr_classactionunskilledstrCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
@@ -204,20 +204,83 @@ for ($i=$start; $i<=$max; $i++)
 	
 }
 
-// Now stitch together all the hidden fileds that power the classactions being used elsewhere
+// Now stitch together all the hidden fields that power the classactions being used elsewhere
 
-/*
-$weight_calc = "";
-for ($i=$start; $i<=$max; $i++)
+$full_output .=<<<END
+
+		<!-- Hidden attributes to power output to other rolls -->
+		
+END;
+
+$autocalcs = array (
+	"classactionstrengthsave" => "",
+	"classactiondexteritysave"=> "",
+	"classactionconstitutionsave"=> "",
+	"classactionintelligencesave"=> "",
+	"classactionwisdomsave"=> "",
+	"classactioncharismasave"=> "",
+	"classactiondeathsave"=> "",
+	
+	"classactioninitiative" => "",
+	"classactionhitdice" => "",
+	
+	"classactionmeleeweapon" => "",
+	"classactionrangedweapon" => "",
+	
+	"classactionspellinfo" => "",
+	"classactionspellcast" => "",
+	
+	"classactionacrobatics" => "",
+	"classactionanimalhandling" => "",
+	"classactionarcana" => "",
+	"classactionathletics" => "",
+	"classactiondeception" => "",
+	"classactionhistory" => "",
+	"classactioninsight" => "",
+	"classactionintimidation" => "",
+	"classactioninvestigation" => "",
+	
+	"classactionmedicine" => "",
+	"classactionnature" => "",
+	"classactionperception" => "",
+	"classactionperformance" => "",
+	"classactionpersuasion" => "",
+	"classactionreligion" => "",
+	"classactionsleightofhand" => "",
+	"classactionstealth" => "",
+	"classactionsurvival" => "",
+	
+	"classactioncustom1skill" => "",
+	"classactioncustom2skill" => "",
+	"classactioncustom3skill" => "",
+	"classactioncustom4skill" => "",
+
+	"classactionunskilledstr" => "",
+	"classactionunskilleddex" => "",
+	"classactionunskilledcon" => "",
+	"classactionunskilledint" => "",
+	"classactionunskilledwis" => "",
+	"classactionunskilledcha" => ""	
+);
+
+foreach ($autocalcs as $key => $value)
 {
-	$weight_calc .= "@{inventorycarried$i} + (((@{inventoryqty$i} - 1) * @{inventorycarried$i}) * @{weight_unit_setting})";
-	if ($i < $max) $weight_calc .= " + ";
+	$full_output .= '<input type="hidden" name="attr_' . $key . '" value="';
+	
+	for ($i=$start; $i<=$max; $i++)
+	{
+		$autocalcs[$key] .= "@{" . $key . $i . "} ";
+	}
+	
+	$full_output .= $autocalcs[$key] . '" disabled="disabled">';
+	
 }
 
-$html_weight_calc = "<input type=\"hidden\" name=\"attr_inventory_weight_calc\" value=\"(" . $weight_calc . ")\" />";
+$full_output .=<<<END
 
-$full_output .= $html_weight_calc;
-*/
+		<!--  END Hidden attributes to power output to other rolls ->
+END;
+
 
 
 //echo $full_output;
