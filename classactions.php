@@ -62,27 +62,111 @@ $classaction_rows = <<<'END'
 					<option value="Other">Other</option>
 				</select>
 			</div>
-			<div class="sheet-col-1-6 sheet-center"><button type='roll' class="sheet-roll" name="roll_classactionCURRENTROW" value="&{template:5eDefault} {{title=@{classactionnameCURRENTROW}}} {{subheader=@{character_name}}} {{freetextname=@{classactionnameCURRENTROW}}} {{freetext=@{classactionoutputCURRENTROW}}} {{debug=1}}" >Use</button></div>
+			<div class="sheet-col-1-6 sheet-center"><button type='roll' class="sheet-roll" name="roll_classactionCURRENTROW" value="&{template:5eDefault} {{title=@{classactionnameCURRENTROW}}} {{subheader=@{character_name}}} {{subheaderright=Class/Racial/Other ability}} {{freetextname=@{classactionnameCURRENTROW}}} {{freetext=@{classactionoutputCURRENTROW}}} {{debug=1}}" >Use</button></div>
 		</div>
 		
-		<div class="sheet-row sheet-padb sheet-classaction-output-options">
-			<div class="sheet-col-1-8 sheet-vert-middle sheet-small-label sheet-padl">Auto include output with</div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label">Info block<br/><input type="checkbox" name="attr_spellshowinfoblock" value="{{spellshowinfoblock=1}}"/></div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label">Description<br><input type="checkbox" name="attr_spellshowdesc" value="{{spellshowdesc=1}} {{spelldescription=@{spelldescription}}}"/></div>
-			<div class="sheet-col-1-8 sheet-center sheet-small-label">At higher levels<br><input type="checkbox" name="attr_spellshowhigherlvl" value="{{spellshowhigherlvl=1}} {{spellhigherlevel=@{spellhighersloteffect}}}" /></div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label">Attack roll<br/><input type="checkbox" name="attr_spellshowattack" value="{{spellshowattack=1}} {{spellattack=[[1d20 + @{attackstat} + @{PB} + (@{global_spell_attack_bonus})]]}}" /></div>
-			<div class="sheet-col-1-8 sheet-center sheet-small-label">2nd Attack roll<br/><input type="checkbox" name="attr_spellshowattackadv" value="{{spellshowattackadv=1}} {{spellattackadv=[[1d20 + @{attackstat} + @{PB} + (@{global_spell_attack_bonus})]]}}" /></div>
-			<div class="sheet-col-1-8 sheet-center sheet-small-label">Saving throw<br/><input type="checkbox" name="attr_spellshowsavethrow" value="{{spellshowsavethrow=1}} {{spellsavedc=[[@{spellsavedc} + @{customsavedc}]]}} {{spellsavestat=@{savestat}}} {{spellsavesuccess=@{savesuccess}}}" /></div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label">Healing<br/><input type="checkbox" name="attr_spellshowhealing" value="{{spellshowhealing=1}} {{spellhealing=[[@{spellhealamount} + @{healstatbonus}]]}}" /></div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label">Damage<br/><input type="checkbox" name="attr_spellshowdamage" value="{{spellshowdamage=1}} {{spelldamage=[[@{damage} + @{damagestatbonus} + @{damagemiscbonus} + (@{global_spell_damage_bonus}) + 0d0]] @{damagetype}}} @{spellcancrit}" /></div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label">Effects<br/><input type="checkbox" name="attr_spellshoweffects" value="{{spellshoweffects=1}} {{spelleffect=@{spelleffect}}}" /></div>
+		<div class="sheet-row">
+			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-padt">Output</div>
+			<div class="sheet-col-11-12 sheet-margin-top"><textarea class="sheet-fluid-textarea" name="attr_classactionoutputCURRENTROW"></textarea></div>
+		</div>
+		
+		<span class="sheet-small-note sheet-padr sheet-offset-1-12">Show output options?</span><input type="checkbox" name="attr_classactionshowoptionsCURRENTROW" class="sheet-classactionshowoptionsCURRENTROW" value="1"/>
+		
+		<div class="sheet-classaction-output-options sheet-padb sheet-margin-bottom">
+		
+			<span class="sheet-offset-1-12 sheet-col-5-6 sheet-small-note">Check the appropriate option(s) below to have the output automatically be included in the roll type specified</span>
 			
-			<input type="hidden" name="attr_spellcastmacrooptions" value="@{spellshowinfoblock} @{spellshowdesc} @{spellshowhigherlvl} @{spellshowattack} @{spellshowattackadv} @{spellshowsavethrow} @{spellshowhealing} @{spellshowdamage} @{spellshoweffects}" />
-		</div>
-		
-		<div class="sheet-row ">
-			<div class="sheet-col-1-6 sheet-center sheet-small-label sheet-padt">Output</div>
-			<div class="sheet-col-5-6 sheet-margin-top"><textarea class="sheet-fluid-textarea" name="attr_classactionoutputCURRENTROW"></textarea></div>
+			<hr>
+			
+			<div class="sheet-row">
+				<div class="sheet-offset-1-12 sheet-col-1-3 sheet-small-label sheet-center sheet-border-right">Saving throws</div>
+				<div class="sheet-col-1-6 sheet-small-label sheet-center sheet-border-right">Misc</div>
+				<div class="sheet-col-1-6 sheet-small-label sheet-center sheet-border-right">Weapon attacks</div>
+				<div class="sheet-col-1-6 sheet-small-label sheet-center">Spell</div>
+				
+			</div>
+			
+			
+			<div class="sheet-row">
+				
+				<div class="sheet-offset-1-12 sheet-col-1-24 sheet-center sheet-small-label">STR<br/><input type="checkbox" name="attr_classactionstrengthsaveCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-24 sheet-center sheet-small-label">DEX<br/><input type="checkbox" name="attr_classactiondexteritysaveCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-24 sheet-center sheet-small-label">CON<br/><input type="checkbox" name="attr_classactionconstitutionsaveCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-24 sheet-center sheet-small-label">INT<br/><input type="checkbox" name="attr_classactionintelligencesaveCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-24 sheet-center sheet-small-label">WIS<br/><input type="checkbox" name="attr_classactionwisdomhsaveCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-24 sheet-center sheet-small-label">CHA<br/><input type="checkbox" name="attr_classactioncharismasaveCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-border-right">Death<br/><input type="checkbox" name="attr_classactiondeathsaveCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Initiative<br/><input type="checkbox" name="attr_classactioninitiativeCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-border-right">Hit dice<br/><input type="checkbox" name="attr_classactionhitdiceCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Melee<br/><input type="checkbox" name="attr_classactionmeleeweaponCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-border-right">Ranged<br/><input type="checkbox" name="attr_classactionrangedweaponCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Info<br/><input type="checkbox" name="attr_classactionspellinfoCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Cast<br/><input type="checkbox" name="attr_classactionspellcastCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				
+			</div>
+			
+			<hr>
+			
+			<div class="sheet-row">
+				<div class="sheet-col-1 sheet-small-label sheet-center">Core Skills</div>
+			</div>
+			
+			<div class="sheet-row">
+	
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Acrobatics<br/><input type="checkbox" name="attr_classactionacrobaticsCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Animal Handling<br/><input type="checkbox" name="attr_classactionanimalhandlingCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Arcana<br/><input type="checkbox" name="attr_classactionarcanaCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Athletics<br/><input type="checkbox" name="attr_classactionathleticsCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Deception<br/><input type="checkbox" name="attr_classactiondeceptionCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">History<br/><input type="checkbox" name="attr_classactionhistoryCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Insight<br/><input type="checkbox" name="attr_classactioninsightCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Intimidation<br/><input type="checkbox" name="attr_classactionintimidationCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Investigation<br/><input type="checkbox" name="attr_classactioninvestigationCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				
+			</div>
+			
+			
+			<div class="sheet-row">
+			
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Medicine<br/><input type="checkbox" name="attr_classactionmedicineCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Nature<br/><input type="checkbox" name="attr_classactionnatureCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Perception<br/><input type="checkbox" name="attr_classactionperceptionCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Performance<br/><input type="checkbox" name="attr_classactionperformanceCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Persuasion<br/><input type="checkbox" name="attr_classactionpersuasionCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Religion<br/><input type="checkbox" name="attr_classactionreligionCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Sleight of Hand<br/><input type="checkbox" name="attr_classactionsleightofhandCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Stealth<br/><input type="checkbox" name="attr_classactionstealthCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-9 sheet-center sheet-small-label">Survival<br/><input type="checkbox" name="attr_classactionsurvivalCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				
+			</div>
+			
+			<hr>
+			
+			<div class="sheet-row">
+				<div class="sheet-offset-1-7 sheet-col-1-3 sheet-small-label sheet-center sheet-border-right">Custom skills</div>
+				<div class="sheet-col-1-3 sheet-small-label sheet-center ">Unskilled checks</div>
+			</div>
+			
+			<div class="sheet-row">
+			
+				<div class="sheet-offset-1-7 sheet-col-1-12 sheet-center sheet-small-label">Custom 1<br/><input type="checkbox" name="attr_classactioncustomskill1-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom 2<br/><input type="checkbox" name="attr_classactioncustomskill2-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label">Custom 3<br/><input type="checkbox" name="attr_classactioncustomskill3-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-border-right">Custom 4<br/><input type="checkbox" name="attr_classactioncustomskill4-CURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				
+				
+				<div class="sheet-col-1-18 sheet-center sheet-small-label">STR<br/><input type="checkbox" name="attr_classactionunskilledstrCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-18 sheet-center sheet-small-label">DEX<br/><input type="checkbox" name="attr_classactionunskilleddexCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-18 sheet-center sheet-small-label">CON<br/><input type="checkbox" name="attr_classactionunskilledconCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-18 sheet-center sheet-small-label">INT<br/><input type="checkbox" name="attr_classactionunskilledintCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-18 sheet-center sheet-small-label">WIS<br/><input type="checkbox" name="attr_classactionunskilledwisCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+				<div class="sheet-col-1-18 sheet-center sheet-small-label">CHA<br/><input type="checkbox" name="attr_classactionunskilledchaCURRENTROW" value="{{@{classactionnameCURRENTROW}=@{classactionoutputCURRENTROW}}}"/></div>
+			
+			</div>
+			
 		</div>
 			
 	</div>
