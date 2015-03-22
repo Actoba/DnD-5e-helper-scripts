@@ -67,7 +67,7 @@ $classaction_rows = <<<'END'
 		
 		<div class="sheet-row">
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-padt">Output</div>
-			<div class="sheet-col-11-12 sheet-margin-top"><textarea class="sheet-fluid-textarea" name="attr_classactionoutputCURRENTROW"></textarea></div>
+			<div class="sheet-col-11-12 sheet-margin-top"><textarea class="sheet-small-textarea" name="attr_classactionoutputCURRENTROW"></textarea></div>
 		</div>
 		
 		<span class="sheet-small-note sheet-padr sheet-offset-1-12">Show output options?</span><input type="checkbox" name="attr_classactionshowoptionsCURRENTROW" class="sheet-classactionshowoptionsCURRENTROW" value="1"/>

@@ -10,7 +10,7 @@ $melee_header = <<<'END'
 		<div class="sheet-row sheet-sub-header">
 			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom">Prof?</div>
 			<div class="sheet-col-5-24 sheet-center sheet-small-label sheet-vert-bottom">Weapon</div>
-			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Finesse?</div>
+			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Attack<br>Stat</div>
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom sheet-padr">Magic Bonus</div>
 			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom sheet-padr">To<br/>Hit</div>
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Damage Dice</div>
@@ -30,8 +30,13 @@ $melee_rows = <<<'END'
 		<div class="sheet-col-5-24"><input type="text" name="attr_meleeweaponnameCURRENTROW"></div>
 		<div class="sheet-col-1-12">
 			<select name="attr_meleeattackstatCURRENTROW">
-				<option value="@{strength_mod}">No</option>
-				<option value="@{finesse_mod}">Yes</option>
+				<option value="@{strength_mod}" selected="selected">STR</option>
+				<option value="@{finesse_mod}">Finesse</option>
+				<option value="@{dexterity_mod}">DEX</option>
+				<option value="@{constitution_mod}">CON</option>
+				<option value="@{intelligence_mod}">INT</option>
+				<option value="@{wisdom_mod}">WIS</option>
+				<option value="@{charisma_mod}">CHA</option>
 			</select>
 		</div>
 		<div class="sheet-col-1-12 sheet-padr" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_meleemagicCURRENTROW" value="0" step="1"></div>
@@ -54,7 +59,7 @@ $ranged_header = <<<'END'
 			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom">Prof?</div>
 			<div class="sheet-col-1-18 sheet-center sheet-small-label sheet-vert-bottom">Ammo</div>
 			<div class="sheet-col-1-6 sheet-center sheet-small-label sheet-vert-bottom">Weapon</div>
-			<div class="sheet-col-1-9 sheet-center sheet-small-label sheet-vert-bottom">Type</div>
+			<div class="sheet-col-1-9 sheet-center sheet-small-label sheet-vert-bottom">Attack<br>Stat</div>
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom sheet-padr">Magic Bonus</div>
 			<div class="sheet-col-1-24 sheet-center sheet-small-label sheet-vert-bottom sheet-padr">To<br/>Hit</div>
 			<div class="sheet-col-1-12 sheet-center sheet-small-label sheet-vert-bottom">Damage Dice</div>
@@ -77,9 +82,13 @@ $ranged_rows = <<<'END'
 		<div class="sheet-col-1-6"><input type="text" name="attr_rangedweaponnameCURRENTROW"></div>
 		<div class="sheet-col-1-9" title="Choose either normal or thrown">
 			<select name="attr_rangedtypeCURRENTROW">
-				<option value="@{dexterity_mod}">Normal</option>
-				<option value="@{strength_mod}">Thrown</option>
-				<option value="@{finesse_mod}">Thrown(finesse)</option>
+				<option value="@{dexterity_mod}" selected="selected">DEX</option>
+				<option value="@{strength_mod}">STR</option>
+				<option value="@{finesse_mod}">Finesse</option>
+				<option value="@{constitution_mod}">CON</option>
+				<option value="@{intelligence_mod}">INT</option>
+				<option value="@{wisdom_mod}">WIS</option>
+				<option value="@{charisma_mod}">CHA</option>
 			</select>
 		</div>
 		<div class="sheet-col-1-12 sheet-padr" title="The magic bonus will be added as a bonus to BOTH the attack and damage rolls"><input type="number" name="attr_rangedmagicCURRENTROW" value="0" step="1"></div>
