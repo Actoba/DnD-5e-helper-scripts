@@ -127,13 +127,13 @@ $spell_row = <<<'END'
 					<div class="sheet-col-1-12 sheet-center sheet-small-label">Info block<br/><input type="checkbox" name="attr_spellshowinfoblock" value="{{spellshowinfoblock=1}}"/></div>
 					<div class="sheet-col-1-12 sheet-center sheet-small-label">Description<br><input type="checkbox" name="attr_spellshowdesc" value="{{spellshowdesc=1}} {{spelldescription=@{spelldescription}}}"/></div>
 					<div class="sheet-col-1-8 sheet-center sheet-small-label">At higher levels<br><input type="checkbox" name="attr_spellshowhigherlvl" value="{{spellshowhigherlvl=1}} {{spellhigherlevel=@{spellhighersloteffect}}}" /></div>
-					<div class="sheet-col-1-12 sheet-center sheet-small-label">Attack roll<br/><input type="checkbox" name="attr_spellshowattack" value="{{spellshowattack=1}} {{spellattack=[[1d20 + @{attackstat} + @{PB} + (@{global_spell_attack_bonus})]]}}" /></div>
-					<div class="sheet-col-1-8 sheet-center sheet-small-label">2nd Attack roll<br/><input type="checkbox" name="attr_spellshowattackadv" value="{{spellshowattackadv=1}} {{spellattackadv=[[1d20 + @{attackstat} + @{PB} + (@{global_spell_attack_bonus})]]}}" /></div>
+					<div class="sheet-col-1-12 sheet-center sheet-small-label">Attack roll<br/><input type="checkbox" name="attr_spellshowattack" value="{{spellshowattack=1}} {{spellattack=[[1d20 + [[@{attackstat}]] + [[@{PB}]] + [[(@{global_spell_attack_bonus})]] ]]}}" /></div>
+					<div class="sheet-col-1-8 sheet-center sheet-small-label">2nd Attack roll<br/><input type="checkbox" name="attr_spellshowattackadv" value="{{spellshowattackadv=1}} {{spellattackadv=[[1d20 + [[@{attackstat}]] + [[@{PB}]] + [[(@{global_spell_attack_bonus})]] ]]}}" /></div>
 					<div class="sheet-col-1-8 sheet-center sheet-small-label">Saving throw<br/><input type="checkbox" name="attr_spellshowsavethrow" value="{{spellshowsavethrow=1}} {{spellsavedc=[[@{spellsavedc} + @{customsavedc}]]}} {{spellsavestat=@{savestat}}} {{spellsavesuccess=@{savesuccess}}}" /></div>
 					<div class="sheet-col-1-12 sheet-center sheet-small-label">Healing<br/><input type="checkbox" name="attr_spellshowhealing" value="{{spellshowhealing=1}} {{spellhealing=[[@{spellhealamount} + @{healstatbonus}]]}}" /></div>
-					<div class="sheet-col-1-12 sheet-center sheet-small-label">Damage<br/><input type="checkbox" name="attr_spellshowdamage" value="{{spellshowdamage=1}} {{spelldamage=[[@{damage} + @{damagestatbonus} + @{damagemiscbonus} + (@{global_spell_damage_bonus}) + 0d0]] @{damagetype}}} @{spellcancrit}" /></div>
+					<div class="sheet-col-1-12 sheet-center sheet-small-label">Damage<br/><input type="checkbox" name="attr_spellshowdamage" value="{{spellshowdamage=1}} {{spelldamage=[[@{damage} + [[@{damagestatbonus}]] + @{damagemiscbonus} + [[(@{global_spell_damage_bonus})]] ]] @{damagetype}}} @{spellcancrit}" /></div>
 					<div class="sheet-col-1-12 sheet-center sheet-small-label">Effects<br/><input type="checkbox" name="attr_spellshoweffects" value="{{spellshoweffects=1}} {{spelleffect=@{spelleffect}}}" /></div>
-					
+
 					<input type="hidden" name="attr_spellcastmacrooptions" value="@{spellshowinfoblock} @{spellshowdesc} @{spellshowhigherlvl} @{spellshowattack} @{spellshowattackadv} @{spellshowsavethrow} @{spellshowhealing} @{spellshowdamage} @{spellshoweffects}" />
 				</div>
 				

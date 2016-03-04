@@ -106,8 +106,8 @@ $melee_rows = <<<'END'
 						<div class="sheet-col-1-3 sheet-ro-optionlabel">Show math?</div>
 						<div class="sheet-col-2-3 sheet-padl sheet-ro-option"><input type="checkbox" name="attr_ro_meleeCURRENTROW_showmath" value="{{math=Attack: 
 						1d20
-						+ [[@{meleedmgbonusCURRENTROW}]] [To Hit mod]
-						+ (@{global_melee_damage_bonus}) [Global melee attack bonus]
+						+ [[@{meleetohitCURRENTROW}]] [To Hit mod]
+						+ (@{global_melee_attack_bonus}) [Global melee attack bonus]
 						Damage: 
 						@{meleedmgCURRENTROW} [Damage dice] + 
 						[[@{meleedmgbonusCURRENTROW}]] [Damage bonus] +
@@ -231,8 +231,8 @@ $ranged_rows = <<<'END'
 						<div class="sheet-col-1-3 sheet-ro-optionlabel">Show math?</div>
 						<div class="sheet-col-2-3 sheet-padl sheet-ro-option"><input type="checkbox" name="attr_ro_rangedCURRENTROW_showmath" value="{{math=Attack: 
 						1d20
-						+ [[@{rangeddmgbonusCURRENTROW}]] [To Hit mod]
-						+ (@{global_ranged_damage_bonus}) [Global ranged attack bonus]
+						+ [[@{rangedtohitCURRENTROW}]] [To Hit mod]
+						+ (@{global_ranged_attack_bonus}) [Global ranged attack bonus]
 						Damage: 
 						@{rangeddmgCURRENTROW} [Damage dice] + 
 						[[@{rangeddmgbonusCURRENTROW}]] [Damage bonus] +
